@@ -25,6 +25,9 @@ study an independent research project.
 
 - Sites project ID is stored in `.openai/hosting.json`.
 - New Site starts private.
+- First private deployment succeeded at
+  `https://contextfair.om-exp99.chatgpt.site`.
+- Deployed source commit: `27738dffc9b433162b03db0c91606854bda6b86d`.
 
 ## Completed at checkpoint start
 
@@ -54,6 +57,6 @@ study an independent research project.
 
 ## Exact next action
 
-Package and privately deploy this verified source revision. Then plan exact
-on-demand tokenizer verification as a separate application milestone without
-changing the tokenizer study.
+Plan exact on-demand tokenizer verification as a separate application milestone
+without changing the tokenizer study. Keep the public hackathon deployment and
+GitHub publication for a later reviewed release.

@@ -32,6 +32,10 @@ future exact tokenizer measurements.
 - Desktop browser rendering visually inspected.
 - Hindi example and method dialog interaction verified.
 - No browser warnings or errors observed.
+- Private Sites deployment succeeded:
+  `https://contextfair.om-exp99.chatgpt.site`.
+- First deployed source commit:
+  `27738dffc9b433162b03db0c91606854bda6b86d`.
 
 ## Unfinished
 
@@ -46,4 +50,3 @@ future exact tokenizer measurements.
 After the private first build is deployed, design the exact-tokenizer milestone so
 it uses pinned, properly attributed tokenizer assets while preserving the separate
 study boundary.
-
