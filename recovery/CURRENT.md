@@ -1,8 +1,8 @@
 # ContextFair recovery checkpoint
 
-Updated: 2026-10-11 (Asia/Kolkata)
+Updated: 2026-10-16 (Asia/Kolkata)
 
-Status: **first application round completed and verified**
+Status: **exact-tokenizer milestone verified; private deployment pending**
 
 ## Request
 
@@ -16,7 +16,7 @@ study an independent research project.
 - Product name is provisional: ContextFair.
 - Initial prototype is a buildless static web app with browser-local analysis.
 - Current model values are estimates and must be labelled as such.
-- Exact tokenizer verification is a later, separately labelled feature.
+- Exact tokenizer verification is on demand and separately labelled.
 - No research dataset, protected evaluation text, tokenizer assets, credentials,
   or model weights are copied into the app.
 - Reuse of the LocalMind estimator requires MIT attribution and is documented.
@@ -28,6 +28,9 @@ study an independent research project.
 - First private deployment succeeded at
   `https://contextfair.om-exp99.chatgpt.site`.
 - Deployed source commit: `27738dffc9b433162b03db0c91606854bda6b86d`.
+- The standalone GitHub repository is
+  `https://github.com/OmTheLast/contextfair`; local and remote histories were
+  merged without a force push. Stable baseline pushed at `b6be215`.
 
 ## Completed at checkpoint start
 
@@ -43,10 +46,17 @@ study an independent research project.
   examples, method disclosure, privacy statement, and responsive layout.
 - Added product/research boundary and third-party attribution documents.
 - Added deterministic tests in `tests/core.test.mjs`.
+- Added an on-demand Web Worker using Transformers.js 3.8.1 and the pinned Qwen
+  tokenizer revision `57b13b4dce7be073be0df3eaf1c842a6bbb2e0a7`.
+- Added idle, loading, measured, stale, and error presentation states.
+- Added a changed-text safeguard so an old measurement cannot be displayed for
+  newly edited input.
+- Added responsive exact-result styling and corrected the hidden-state rule
+  found during browser validation.
 
 ## Checks
 
-- `node --test tests/core.test.mjs`: 5/5 passed.
+- `node --test tests/core.test.mjs`: 7/7 passed.
 - Local page loaded successfully at `http://127.0.0.1:4173/`.
 - Browser interaction check: switching to the Hindi example updated the displayed
   range to 21–96 estimated tokens and 77 Unicode characters.
@@ -54,9 +64,15 @@ study an independent research project.
 - Browser console contained no warnings or errors during the checked flow.
 - Desktop visual inspection passed; responsive CSS exists but a separate mobile
   screenshot was not available in the current browser capability.
+- Browser reference validation: Qwen measured 35 tokens, the ContextFair
+  estimate was 43, and the UI reported 8 tokens / 22.9% over at pinned revision
+  `57b13b4dc…`, with special tokens disabled.
+- Browser console: no warnings or errors during exact measurement.
+- Changed-text safeguard: stale state shown and old result hidden.
+- Mobile check at 390x844: two-column result grid, no horizontal overflow.
 
 ## Exact next action
 
-Plan exact on-demand tokenizer verification as a separate application milestone
-without changing the tokenizer study. Keep the public hackathon deployment and
-GitHub publication for a later reviewed release.
+Commit and push the verified milestone, package it with the Sites workflow, and
+deploy it to the existing private Site. Do not modify the tokenizer study or
+change the Site audience.

@@ -22,6 +22,10 @@ ContextFair may consume a versioned, released artifact from the study as an
 external dependency. It must identify the artifact and version, preserve license
 and provenance, and reproduce only claims supported by that release.
 
+The application may also run a pinned public tokenizer directly in the browser.
+That output is an application measurement, not a new study result; the interface
+must identify the tokenizer revision and whether special tokens are enabled.
+
 ContextFair must not:
 
 - change research data or study conclusions;

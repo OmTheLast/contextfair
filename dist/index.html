@@ -24,7 +24,7 @@
       <div class="hero-kicker">A context-budget microscope</div>
       <h1>Your language should not<br><em>silently cost more context.</em></h1>
       <p class="hero-copy">The same idea can occupy a different number of tokens across AI models and writing systems. ContextFair turns that hidden difference into something you can see—and plan around.</p>
-      <div class="hero-stat"><span>01</span><p><strong>Count transparently.</strong> An estimate is labelled as an estimate. Exact verification will be labelled separately.</p></div>
+      <div class="hero-stat"><span>01</span><p><strong>Count transparently.</strong> Estimates are labelled as estimates. On-demand exact verification is labelled separately.</p></div>
     </section>
 
     <section id="lab" class="lab-shell" aria-labelledby="lab-title">
@@ -45,6 +45,19 @@
           <div class="card-label"><span>02 / Comparison</span><span class="estimate-badge">Estimates</span></div>
           <div class="results-summary"><span id="min-max"></span><span>shorter bar = fewer estimated tokens</span></div>
           <div id="model-results" class="model-results" aria-live="polite"></div>
+          <section id="exact-panel" class="exact-panel" data-state="idle" aria-labelledby="exact-title">
+            <div class="exact-head">
+              <div><span class="exact-dot"></span><div><strong id="exact-title">Exact Qwen verification</strong><span>Qwen 3.5 · pinned tokenizer revision</span></div></div>
+              <button id="verify-exact" type="button">Measure exact Qwen count</button>
+            </div>
+            <p id="exact-status" aria-live="polite">Tokenizer downloads only when you ask. About 19 MB, then cached by your browser.</p>
+            <div id="exact-result" class="exact-result" hidden>
+              <div><span>Measured</span><strong id="exact-count">—</strong><small>tokens</small></div>
+              <div><span>Estimate</span><strong id="exact-estimate">—</strong><small>tokens</small></div>
+              <div><span>Estimator result</span><strong id="exact-delta">—</strong><small>vs measured</small></div>
+              <div><span>Revision</span><strong id="exact-revision">—</strong><small>special tokens off</small></div>
+            </div>
+          </section>
           <aside class="insight"><span>What changed?</span><p id="insight-copy"></p></aside>
         </article>
       </div>
@@ -66,10 +79,9 @@
   <dialog id="method-dialog">
     <button id="close-dialog" aria-label="Close method dialog">×</button><span class="eyebrow">Method, honestly</span><h2>What you are seeing</h2>
     <p>The current build uses fitted script-aware profiles to estimate content tokens. Each Unicode character is assigned to a script class, multiplied by a model-family weight, summed, and rounded up.</p>
-    <div class="method-callout"><strong>Estimate ≠ exact tokenization.</strong><span>The app deliberately says “estimated.” Exact in-browser verification will be a separate feature with pinned tokenizer assets and provenance.</span></div>
-    <p>The estimator is adapted from MIT-licensed LocalMind work investigated in the independent Tokenizer Estimation Study. Product scenarios and interface code belong to ContextFair.</p>
+    <div class="method-callout"><strong>Estimate ≠ exact tokenization.</strong><span>Five profiles remain fast estimates. Exact Qwen verification is an explicit on-demand action using a pinned tokenizer revision with special tokens disabled.</span></div>
+    <p>The estimator is adapted from MIT-licensed LocalMind work investigated in the independent Tokenizer Estimation Study. Exact verification uses the browser-supported Transformers.js tokenizer API. Product scenarios and interface code belong to ContextFair.</p>
   </dialog>
   <script type="module" src="./app.js"></script>
 </body>
 </html>
-

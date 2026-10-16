@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { PROFILES, analyze, classIndex, composition, estimate, significantScripts } from "../dist/core.mjs";
+import { readFile } from "node:fs/promises";
+import { PROFILES, analyze, classIndex, compareExact, composition, estimate, significantScripts } from "../dist/core.mjs";
 
 test("script classifier distinguishes representative writing systems", () => {
   assert.equal(classIndex("A".codePointAt(0)), 0);
@@ -31,5 +32,22 @@ test("significant scripts are sorted by observed share", () => {
   const scripts = significantScripts("hello नमस्ते");
   assert.equal(scripts[0].name, "latin");
   assert.ok(scripts.some(script => script.name === "devanagari"));
+});
+
+test("exact comparison reports direction and percentage", () => {
+  const over = compareExact(43, 35);
+  assert.equal(over.delta, 8);
+  assert.equal(over.absoluteDelta, 8);
+  assert.equal(over.direction, "over");
+  assert.equal(over.percent.toFixed(1), "22.9");
+  assert.equal(compareExact(35, 35).direction, "match");
+  assert.equal(compareExact(30, 35).direction, "under");
+});
+
+test("exact worker pins the tokenizer implementation and revision", async () => {
+  const source = await readFile(new URL("../dist/exact-tokenizer-worker.js", import.meta.url), "utf8");
+  assert.match(source, /@huggingface\/transformers@3\.8\.1/);
+  assert.match(source, /57b13b4dce7be073be0df3eaf1c842a6bbb2e0a7/);
+  assert.match(source, /add_special_tokens:\s*false/);
 });
 

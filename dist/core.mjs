@@ -70,3 +70,13 @@ export function formatNumber(value) {
   return new Intl.NumberFormat("en-IN").format(value);
 }
 
+export function compareExact(estimated, measured) {
+  const delta = Number(estimated) - Number(measured);
+  return {
+    delta,
+    absoluteDelta: Math.abs(delta),
+    percent: measured ? (delta / measured) * 100 : 0,
+    direction: delta === 0 ? "match" : delta < 0 ? "under" : "over",
+  };
+}
+
