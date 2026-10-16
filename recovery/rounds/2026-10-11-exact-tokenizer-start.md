@@ -30,8 +30,15 @@ the tokenizer estimation study independent and the existing Site private.
 - Verified no browser warnings/errors and no horizontal overflow at 390x844.
 - Kept the Site private and made no tokenizer-study changes.
 
-## Remaining
+## Deployment
 
-- Commit and push this verified milestone.
-- Package and deploy it to the existing private Site.
+- GitHub milestone commit: `fb7e821fc230f7d850d2f47350c8622229808029`.
+- Private Site deployment succeeded as
+  `appgdep_6ad253e548648191a4cf627bedad1eb7`.
+- Live URL remains `https://contextfair.om-exp99.chatgpt.site`.
+
+## Next action
+
+Begin the hackathon presentation pass: judge-facing story, README polish,
+screenshots, and the four-minute demo outline.
 

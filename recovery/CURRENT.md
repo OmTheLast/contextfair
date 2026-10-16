@@ -2,7 +2,7 @@
 
 Updated: 2026-10-16 (Asia/Kolkata)
 
-Status: **exact-tokenizer milestone verified; private deployment pending**
+Status: **exact-tokenizer milestone verified and deployed privately**
 
 ## Request
 
@@ -70,9 +70,16 @@ study an independent research project.
 - Browser console: no warnings or errors during exact measurement.
 - Changed-text safeguard: stale state shown and old result hidden.
 - Mobile check at 390x844: two-column result grid, no horizontal overflow.
+- Exact-tokenizer Site deployment succeeded from commit
+  `fb7e821fc230f7d850d2f47350c8622229808029`.
+- Saved Site version:
+  `appgprj_6acb864b26b08191b2c87a336a6b9cfd~appgver_0d855e60ba24819192ef5baf8f15e5c4`.
+- Deployment: `appgdep_6ad253e548648191a4cf627bedad1eb7`;
+  private URL remains `https://contextfair.om-exp99.chatgpt.site`.
 
 ## Exact next action
 
-Commit and push the verified milestone, package it with the Sites workflow, and
-deploy it to the existing private Site. Do not modify the tokenizer study or
-change the Site audience.
+Start the hackathon presentation pass: sharpen the one-minute judge journey,
+prepare the public-repository README and screenshots, and draft the four-minute
+demo outline. Do not modify the tokenizer study or change Site access without
+the user's explicit approval.
