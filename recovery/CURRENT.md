@@ -76,6 +76,8 @@ study an independent research project.
   `appgprj_6acb864b26b08191b2c87a336a6b9cfd~appgver_0d855e60ba24819192ef5baf8f15e5c4`.
 - Deployment: `appgdep_6ad253e548648191a4cf627bedad1eb7`;
   private URL remains `https://contextfair.om-exp99.chatgpt.site`.
+- Post-deployment production check repeated the reference result (35 measured,
+  43 estimated, 8 / 22.9% over) with no browser warnings or errors.
 
 ## Exact next action
 

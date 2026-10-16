@@ -36,6 +36,8 @@ the tokenizer estimation study independent and the existing Site private.
 - Private Site deployment succeeded as
   `appgdep_6ad253e548648191a4cf627bedad1eb7`.
 - Live URL remains `https://contextfair.om-exp99.chatgpt.site`.
+- A post-deployment browser check reproduced 35 measured versus 43 estimated
+  with no browser warnings or errors.
 
 ## Next action
 
