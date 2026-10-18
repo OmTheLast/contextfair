@@ -2,7 +2,7 @@
 
 Updated: 2026-10-18 (Asia/Kolkata)
 
-Status: **presentation and README complete; private deployment pending**
+Status: **presentation and README committed, pushed, and deployed privately; visual QA outstanding**
 
 ## Request
 
@@ -81,11 +81,14 @@ study an independent research project.
 
 ## Exact next action
 
-Package and deploy the October 18 presentation pass to the existing private Site.
+The October 18 presentation pass is deployed from commit
+`33c32efa4a9604fbcd68207d90119c43937abc25`.
+Deployment `appgdep_6ad444b387e08191b008c5e6ad67e4ca` succeeded at
+`https://contextfair.om-exp99.chatgpt.site` with owner-private access preserved.
 README and docs/JUDGE_GUIDE.md are prepared. Eight tests, syntax, documentation
 links, element references, and HTTP readiness passed. Browser review was blocked
 by the browser tool URL security policy; new screenshots and visual/interactive
 QA remain unverified. See recovery/rounds/2026-10-18-presentation.md.
 
-After deployment, review the page manually, record the video, and finalize the
+Review the page manually, record the video, and finalize the
 Devpost description. Site access changes and submission require user direction.

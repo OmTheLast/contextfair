@@ -14,7 +14,7 @@ UI screenshots; validate changes; commit/push and update the private Site.
 
 ## Status
 
-Implementation complete; private deployment pending. EurekaDev requirements
+Implementation complete; private deployment succeeded. EurekaDev requirements
 checked on the official overview and rules pages: public source with setup
 README, description, <=4 minute video; live demo recommended.
 
@@ -40,6 +40,12 @@ README, description, <=4 minute video; live demo recommended.
 
 ## Next action
 
-Commit/push, package and deploy the existing private Site, then record deployment.
+Source commit `33c32efa4a9604fbcd68207d90119c43937abc25` was pushed to GitHub
+and Sites. Private deployment `appgdep_6ad444b387e08191b008c5e6ad67e4ca`
+succeeded at https://contextfair.om-exp99.chatgpt.site.
+Saved version:
+`appgprj_6acb864b26b08191b2c87a336a6b9cfd~appgver_9ca8c92f3cd08191a28fd2997d8184d4`.
+Temporary preview server is stopped during teardown; no background job is needed.
+
 The recorded video, final Devpost text, and public access decisions remain later
 submission tasks. A human browser review of this presentation pass is outstanding.
