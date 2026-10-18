@@ -80,3 +80,16 @@ export function compareExact(estimated, measured) {
   };
 }
 
+export function measuredBudgetCopy(estimated, measured, available) {
+  const difference = estimated - measured;
+  const comparison = difference > 0
+    ? `The estimate sets aside ${formatNumber(difference)} more tokens than this text needs.`
+    : difference < 0
+      ? `The estimate misses ${formatNumber(-difference)} tokens that this text needs.`
+      : "The estimate matches the measured count for this text.";
+  const budget = measured > available
+    ? `This text exceeds your ${formatNumber(available)}-token input budget by ${formatNumber(measured - available)} tokens.`
+    : `This text leaves ${formatNumber(available - measured)} of your ${formatNumber(available)} input tokens available.`;
+  return `${comparison} ${budget} Chat formatting and system instructions are not included.`;
+}
+

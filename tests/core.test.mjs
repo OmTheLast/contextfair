@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { PROFILES, analyze, classIndex, compareExact, composition, estimate, significantScripts } from "../dist/core.mjs";
+import { PROFILES, analyze, classIndex, compareExact, composition, estimate, measuredBudgetCopy, significantScripts } from "../dist/core.mjs";
 
 test("script classifier distinguishes representative writing systems", () => {
   assert.equal(classIndex("A".codePointAt(0)), 0);
@@ -49,5 +49,12 @@ test("exact worker pins the tokenizer implementation and revision", async () => 
   assert.match(source, /@huggingface\/transformers@3\.8\.1/);
   assert.match(source, /57b13b4dce7be073be0df3eaf1c842a6bbb2e0a7/);
   assert.match(source, /add_special_tokens:\s*false/);
+});
+
+test("measured explanation uses the real count for remaining space and overflow", () => {
+  assert.match(measuredBudgetCopy(43, 35, 3072), /8 more tokens.*3,037 of your 3,072/s);
+  assert.match(measuredBudgetCopy(30, 35, 32), /misses 5 tokens.*exceeds.*by 3 tokens/s);
+  assert.match(measuredBudgetCopy(35, 35, 35), /matches.*leaves 0/s);
+  assert.match(measuredBudgetCopy(43, 35, 0), /exceeds your 0-token input budget by 35/);
 });
 

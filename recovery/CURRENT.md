@@ -1,8 +1,8 @@
 # ContextFair recovery checkpoint
 
-Updated: 2026-10-16 (Asia/Kolkata)
+Updated: 2026-10-18 (Asia/Kolkata)
 
-Status: **exact-tokenizer milestone verified and deployed privately**
+Status: **presentation and README complete; private deployment pending**
 
 ## Request
 
@@ -27,7 +27,7 @@ study an independent research project.
 - New Site starts private.
 - First private deployment succeeded at
   `https://contextfair.om-exp99.chatgpt.site`.
-- Deployed source commit: `27738dffc9b433162b03db0c91606854bda6b86d`.
+- First deployed source commit: `27738dffc9b433162b03db0c91606854bda6b86d`.
 - The standalone GitHub repository is
   `https://github.com/OmTheLast/contextfair`; local and remote histories were
   merged without a force push. Stable baseline pushed at `b6be215`.
@@ -81,7 +81,11 @@ study an independent research project.
 
 ## Exact next action
 
-Start the hackathon presentation pass: sharpen the one-minute judge journey,
-prepare the public-repository README and screenshots, and draft the four-minute
-demo outline. Do not modify the tokenizer study or change Site access without
-the user's explicit approval.
+Package and deploy the October 18 presentation pass to the existing private Site.
+README and docs/JUDGE_GUIDE.md are prepared. Eight tests, syntax, documentation
+links, element references, and HTTP readiness passed. Browser review was blocked
+by the browser tool URL security policy; new screenshots and visual/interactive
+QA remain unverified. See recovery/rounds/2026-10-18-presentation.md.
+
+After deployment, review the page manually, record the video, and finalize the
+Devpost description. Site access changes and submission require user direction.

@@ -1,4 +1,4 @@
-import { EXAMPLES, analyze, compareExact, formatNumber, significantScripts } from "./core.mjs";
+import { EXAMPLES, analyze, compareExact, formatNumber, measuredBudgetCopy, significantScripts } from "./core.mjs";
 
 const $ = selector => document.querySelector(selector);
 const input = $("#text-input");
@@ -9,12 +9,14 @@ const scriptList = $("#script-list");
 let exactWorker = null;
 let exactRequest = 0;
 let measuredText = null;
+let measuredCount = null;
 let pendingText = null;
 let latestAnalysis = null;
 
 function setExactState(state, detail = "") {
   const panel = $("#exact-panel");
   panel.dataset.state = state;
+  $("#exact-meaning").hidden = state !== "measured";
   $("#exact-status").textContent = detail;
   $("#verify-exact").disabled = state === "loading" || !input.value;
   $("#verify-exact").textContent = state === "loading" ? "Loading…" : state === "measured" ? "Measure again" : "Measure exact Qwen count";
@@ -26,7 +28,7 @@ function resetExactForChangedText() {
     $("#exact-result").hidden = true;
     setExactState("stale", "Text changed. Measure again for an exact count.");
   } else if (measuredText === null && $("#exact-panel").dataset.state !== "loading" && $("#exact-panel").dataset.state !== "error") {
-    setExactState("idle", "Tokenizer downloads only when you ask. About 19 MB, then cached by your browser.");
+    setExactState("idle", "First use downloads about 19 MB of tokenizer files plus library code. Your browser may cache them for later.");
   }
 }
 
@@ -51,7 +53,7 @@ function render() {
       <div class="model-meta"><div><span class="model-dot" style="--model:${item.color}"></span><strong>${item.name}</strong></div><span>${item.note}</span></div>
       <div class="token-line"><div class="token-bar"><i style="width:${width}%;--model:${item.color}"></i></div><strong>${formatNumber(item.tokens)}</strong><small>est.</small></div>
       <div class="budget-line"><i style="width:${budgetWidth}%;--model:${item.color}"></i></div>
-      <div class="row-foot"><span>${(item.share * 100).toFixed(item.share < 0.1 ? 1 : 0)}% of input budget</span>${risk}</div>
+      <div class="row-foot"><span>${analysis.available ? `${(item.share * 100).toFixed(item.share < 0.1 ? 1 : 0)}% of input budget` : "No input budget available"}</span>${risk}</div>
     </article>`;
   }).join("");
 
@@ -67,6 +69,9 @@ function render() {
     insight.innerHTML = `<strong>${high.name}</strong> estimates ${(max / Math.max(1, min)).toFixed(1)}× as many tokens as <strong>${low.name}</strong>. That changes how much earlier history can remain in the same context window.`;
   }
   resetExactForChangedText();
+  if (measuredText === text && measuredCount !== null) {
+    $("#exact-meaning").textContent = measuredBudgetCopy(analysis.results.find(item => item.id === "qwen").tokens, measuredCount, analysis.available);
+  }
 }
 
 function measureExact() {
@@ -93,6 +98,7 @@ function measureExact() {
           return;
         }
         measuredText = pendingText;
+        measuredCount = data.count;
         const qwenEstimate = latestAnalysis.results.find(item => item.id === "qwen").tokens;
         const comparison = compareExact(qwenEstimate, data.count);
         $("#exact-count").textContent = formatNumber(data.count);
@@ -101,6 +107,7 @@ function measureExact() {
         $("#exact-revision").textContent = data.revision.slice(0, 9);
         $("#exact-result").hidden = false;
         setExactState("measured", "Measured locally with special tokens disabled. Your text was not uploaded by ContextFair.");
+        $("#exact-meaning").textContent = measuredBudgetCopy(qwenEstimate, measuredCount, latestAnalysis.available);
       }
     });
     exactWorker.addEventListener("error", () => {
@@ -127,6 +134,7 @@ document.querySelectorAll("[data-example]").forEach(button => button.addEventLis
 document.querySelectorAll("input, textarea, select").forEach(element => element.addEventListener("input", render));
 $("#clear-button").addEventListener("click", () => { input.value = ""; document.querySelectorAll("[data-example]").forEach(item => item.classList.remove("active")); input.focus(); render(); });
 $("#method-button").addEventListener("click", () => $("#method-dialog").showModal());
+$("#footer-method").addEventListener("click", () => $("#method-dialog").showModal());
 $("#close-dialog").addEventListener("click", () => $("#method-dialog").close());
 $("#verify-exact").addEventListener("click", measureExact);
 

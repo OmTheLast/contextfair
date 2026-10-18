@@ -21,14 +21,20 @@
 
   <main id="top">
     <section class="hero">
-      <div class="hero-kicker">A context-budget microscope</div>
+      <div class="hero-kicker">Plan multilingual AI conversations</div>
       <h1>Your language should not<br><em>silently cost more context.</em></h1>
-      <p class="hero-copy">The same idea can occupy a different number of tokens across AI models and writing systems. ContextFair turns that hidden difference into something you can see—and plan around.</p>
+      <p class="hero-copy">How much room does your message leave for the conversation? Compare five token estimates, reserve space for a reply, and check the Qwen count directly in your browser.</p>
+      <div class="hero-actions"><a class="primary-link" href="#lab">Try the one-minute walkthrough <span aria-hidden="true">↗</span></a><a href="#why">Why this matters</a></div>
       <div class="hero-stat"><span>01</span><p><strong>Count transparently.</strong> Estimates are labelled as estimates. On-demand exact verification is labelled separately.</p></div>
     </section>
 
     <section id="lab" class="lab-shell" aria-labelledby="lab-title">
       <div class="section-heading"><div><span class="eyebrow">Interactive lab</span><h2 id="lab-title">One message. Five tokenizer profiles.</h2></div><p id="available-copy"></p></div>
+      <ol class="walkthrough" aria-label="One-minute walkthrough">
+        <li><strong>Choose your text</strong><span>Try हिन्दी or paste a message. A token is a piece of text a model counts.</span></li>
+        <li><strong>Set your budget</strong><span>The context window is the total space. Reserve part of it for the reply.</span></li>
+        <li><strong>Check the estimate</strong><span>Measure Qwen to see an actual count and how much space your text uses.</span></li>
+      </ol>
       <div class="lab-grid">
         <article class="input-card">
           <div class="card-label"><span>01 / Input</span><span id="character-count">0 characters</span></div>
@@ -39,6 +45,7 @@
             <label>Context window<select id="context-window"><option value="4096">4,096</option><option value="8192" selected>8,192</option><option value="32768">32,768</option><option value="131072">131,072</option></select></label>
             <label>Reserve for reply<select id="output-reserve"><option value="512">512</option><option value="1024" selected>1,024</option><option value="2048">2,048</option><option value="4096">4,096</option></select></label>
           </div>
+          <p class="demo-note">A shared hypothetical budget, not each model's advertised limit. Counts cover pasted text only; chat formatting and system instructions use extra space.</p>
           <div class="composition"><div class="card-label"><span>Script composition</span><span>Unicode code points</span></div><ul id="script-list"></ul></div>
         </article>
         <article class="results-card">
@@ -50,15 +57,16 @@
               <div><span class="exact-dot"></span><div><strong id="exact-title">Exact Qwen verification</strong><span>Qwen 3.5 · pinned tokenizer revision</span></div></div>
               <button id="verify-exact" type="button">Measure exact Qwen count</button>
             </div>
-            <p id="exact-status" aria-live="polite">Tokenizer downloads only when you ask. About 19 MB, then cached by your browser.</p>
+            <p id="exact-status" aria-live="polite">First use downloads about 19 MB of tokenizer files plus library code. Your browser may cache them for later.</p>
             <div id="exact-result" class="exact-result" hidden>
               <div><span>Measured</span><strong id="exact-count">—</strong><small>tokens</small></div>
               <div><span>Estimate</span><strong id="exact-estimate">—</strong><small>tokens</small></div>
               <div><span>Estimator result</span><strong id="exact-delta">—</strong><small>vs measured</small></div>
               <div><span>Revision</span><strong id="exact-revision">—</strong><small>special tokens off</small></div>
             </div>
+            <p id="exact-meaning" class="exact-meaning" aria-live="polite" hidden></p>
           </section>
-          <aside class="insight"><span>What changed?</span><p id="insight-copy"></p></aside>
+          <aside class="insight"><span>Read the result</span><p id="insight-copy"></p></aside>
         </article>
       </div>
     </section>
@@ -66,21 +74,24 @@
     <section id="why" class="why-section">
       <div class="why-lead"><span class="eyebrow">Why it matters</span><h2>A token difference becomes a product decision.</h2></div>
       <div class="consequence-grid">
-        <article><span>01</span><h3>History retained</h3><p>Overestimation can remove useful earlier turns even when they would still fit.</p></article>
+        <article><span>01</span><h3>History retained</h3><p>If a chat app trims history using an inflated estimate, it can drop earlier messages that would still fit. Check the estimate before deciding what to remove.</p></article>
         <article><span>02</span><h3>Overflow risk</h3><p>Underestimation can admit too much text and trigger truncation at the real tokenizer boundary.</p></article>
-        <article><span>03</span><h3>Unequal experience</h3><p>A language that tokenizes less efficiently can reach the same limit sooner for the same intended meaning.</p></article>
+        <article><span>03</span><h3>Multilingual design</h3><p>Test messages in the languages your users write. Different token counts can leave different amounts of room for context.</p></article>
       </div>
       <div class="principle"><p>Token count is not model quality.</p><span>ContextFair measures budget behavior—not intelligence, cultural understanding, or answer accuracy.</span></div>
     </section>
   </main>
 
-  <footer><div><span class="brand"><span>CF</span>ContextFair</span><p>A new application informed by—separate from—the Tokenizer Estimation Study.</p></div><p>Private prototype · EurekaDev 2026</p></footer>
+  <footer><div><span class="brand"><span>CF</span>ContextFair</span><p>Built for people designing multilingual AI conversations.</p></div><div class="footer-links"><button id="footer-method" class="text-button">Method &amp; privacy</button><a href="https://github.com/OmTheLast/contextfair">Source &amp; setup</a><p>Private prototype · EurekaDev 2026</p></div></footer>
 
   <dialog id="method-dialog">
     <button id="close-dialog" aria-label="Close method dialog">×</button><span class="eyebrow">Method, honestly</span><h2>What you are seeing</h2>
     <p>The current build uses fitted script-aware profiles to estimate content tokens. Each Unicode character is assigned to a script class, multiplied by a model-family weight, summed, and rounded up.</p>
     <div class="method-callout"><strong>Estimate ≠ exact tokenization.</strong><span>Five profiles remain fast estimates. Exact Qwen verification is an explicit on-demand action using a pinned tokenizer revision with special tokens disabled.</span></div>
     <p>The estimator is adapted from MIT-licensed LocalMind work investigated in the independent Tokenizer Estimation Study. Exact verification uses the browser-supported Transformers.js tokenizer API. Product scenarios and interface code belong to ContextFair.</p>
+    <p><strong>What the count covers.</strong> Exact Qwen counts use the selected tokenizer for this text with special tokens disabled. Chat templates, system instructions, tool definitions, and provider billing are excluded. The five comparison rows always remain estimates.</p>
+    <p><strong>Privacy.</strong> ContextFair does not send your entered text to a server or save it between visits. The page loads fonts from Google; exact measurement downloads library code from jsDelivr and tokenizer files from Hugging Face. Those services receive normal network requests. Browser caching depends on your settings.</p>
+    <p><a href="https://github.com/OmTheLast/contextfair#how-it-works">Read the method, evidence, and limitations</a></p>
   </dialog>
   <script type="module" src="./app.js"></script>
 </body>
