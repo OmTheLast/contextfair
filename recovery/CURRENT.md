@@ -2,7 +2,7 @@
 
 Updated: 2026-10-18 (Asia/Kolkata)
 
-Status: **presentation and README committed, pushed, and deployed privately; visual QA outstanding**
+Status: **deployed page reviewed; demo script and Devpost draft prepared**
 
 ## Request
 
@@ -85,10 +85,19 @@ The October 18 presentation pass is deployed from commit
 `33c32efa4a9604fbcd68207d90119c43937abc25`.
 Deployment `appgdep_6ad444b387e08191b008c5e6ad67e4ca` succeeded at
 `https://contextfair.om-exp99.chatgpt.site` with owner-private access preserved.
-README and docs/JUDGE_GUIDE.md are prepared. Eight tests, syntax, documentation
-links, element references, and HTTP readiness passed. Browser review was blocked
-by the browser tool URL security policy; new screenshots and visual/interactive
-QA remain unverified. See recovery/rounds/2026-10-18-presentation.md.
+The subsequent HTTPS page review succeeded on October 18; the earlier localhost
+restriction was not bypassed. Desktop/mobile measurement, reserve changes,
+stale-result behavior, and mobile method access were verified. No horizontal
+overflow or captured console warnings/errors appeared. Review notes and actual
+screenshots are in docs/PAGE_REVIEW.md and docs/screenshots/.
 
-Review the page manually, record the video, and finalize the
-Devpost description. Site access changes and submission require user direction.
+docs/DEMO_SCRIPT.md contains 404 spoken words (about 2:53 at 140 words/minute,
+before clicks/pauses); target 3:30. docs/DEVPOST_DRAFT.md contains the prepared
+description and separate submission operator notes. English is the current
+narration default. Documents are linked from README and JUDGE_GUIDE.
+
+Next: Om reviews wording and rehearses the script, then records/uploads a video
+under four minutes. Consider clarifying the script chart's Latin bucket (it
+includes spaces) before recording; review only, no app change made this round.
+Verify public repo access and decide hosted-demo access before final submission.
+No video, Devpost submission, or access change was performed.

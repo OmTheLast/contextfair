@@ -1,5 +1,9 @@
 # ContextFair demo and submission guide
 
+Prepared drafts: [spoken demo script](DEMO_SCRIPT.md),
+[Devpost description](DEVPOST_DRAFT.md), and
+[deployed-page review with screenshots](PAGE_REVIEW.md).
+
 ## One-sentence pitch
 
 ContextFair helps people building multilingual AI tools see how much conversation
@@ -50,7 +54,8 @@ technical quality, and presentation. AI development assistance is allowed.
 - Source: https://github.com/OmTheLast/contextfair
 - Track/category proposal: Coding / Computer Science + AI.
 - Hosted prototype: https://contextfair.om-exp99.chatgpt.site (owner-private).
-- Still needed: video recording/upload, final Devpost description, verification
+- Devpost description and spoken script are drafted; owner review is pending.
+- Still needed: video recording/upload, approval of the Devpost wording, verification
   of public repository access, and a decision on opening the optional live demo.
 - Registration, eligibility, Discord membership, and final submission remain
   participant actions; this guide does not assert they are complete.

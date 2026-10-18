@@ -12,6 +12,9 @@ Built for **EurekaDev 2026 · Coding Track · Computer Science + AI**.
 [Hosted prototype](https://contextfair.om-exp99.chatgpt.site) ·
 [Demo and pitch guide](docs/JUDGE_GUIDE.md) · [Attribution](NOTICE.md) · [MIT license](LICENSE)
 
+[Spoken demo script](docs/DEMO_SCRIPT.md) · [Devpost draft](docs/DEVPOST_DRAFT.md) ·
+[Page review and screenshots](docs/PAGE_REVIEW.md)
+
 **Demo access:** the hosted prototype currently requires the owner's account.
 Judges can run the complete app locally using the instructions below. Public
 hosting and the recorded submission video are still release tasks.
@@ -121,6 +124,11 @@ an overestimate of **8 tokens / 22.9%**. This is an integration check against a
 known reference, not an unseen benchmark or general accuracy score. Round
 records under `recovery/` document checks and their limitations.
 
+On October 18, the deployed Hindi demo measured **36 tokens versus 33 estimated**.
+Desktop and mobile review verified the revised result explanation, reserve changes,
+stale-result behavior, and the method dialog. See the [review record](docs/PAGE_REVIEW.md)
+for exact settings, screenshots, and the script-bucket wording issue.
+
 ## Privacy and network use
 
 ContextFair's application code does not upload entered text, save it between
@@ -170,7 +178,7 @@ licenses and attribution.
 
 ## Next steps
 
-Record the demo video and finalize the submission description. Release the demo
+Rehearse the prepared script, record the video, and review the submission draft. Release the demo
 for judges after owner review. Potential future product work includes additional
 exact tokenizers and explicit chat-template budgeting; those features are not
 part of this prototype.
