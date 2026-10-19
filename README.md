@@ -1,185 +1,63 @@
-# ContextFair
+<h1 align="center">ContextFair</h1>
 
-**See how much room your message leaves for an AI conversation.**
+**Compare token estimates, reserve room for a reply, and check the result against a pinned Qwen tokenizer.**
 
-ContextFair helps people building multilingual AI tools compare token estimates,
-plan a context budget, and check an estimate against an actual tokenizer—all in
-the browser. A token is a piece of text counted by a model; the context window
-is the space available for its input and response.
+[Hosted prototype (owner access required)](https://contextfair.om-exp99.chatgpt.site)
 
-Built for **EurekaDev 2026 · Coding Track · Computer Science + AI**.
+Browser-local text analysis. No inference API or app analytics. Fonts, libraries, and tokenizer files load from external hosts; hosted prototype is owner-private.
 
-[Hosted prototype](https://contextfair.om-exp99.chatgpt.site) ·
-[Demo and pitch guide](docs/JUDGE_GUIDE.md) · [Attribution](NOTICE.md) · [MIT license](LICENSE)
+By Om Patnaik · repository created October 2026.
 
-[Spoken demo script](docs/DEMO_SCRIPT.md) · [Devpost draft](docs/DEVPOST_DRAFT.md) ·
-[Page review and screenshots](docs/PAGE_REVIEW.md)
+[![License: MIT](https://img.shields.io/badge/license-MIT-176b75?style=flat-square)](LICENSE)
 
-**Demo access:** the hosted prototype currently requires the owner's account.
-Judges can run the complete app locally using the instructions below. Public
-hosting and the recorded submission video are still release tasks.
+![ContextFair Hindi example showing measured tokens, estimated tokens, and remaining context budget](docs/screenshots/hindi-measured-desktop.jpg)
 
-## Why it matters
+## Install
 
-Chat applications work within a finite token budget. If an app overestimates
-message size, it may remove history that could fit. If it underestimates, it may
-send more text than the available space allows. Writing systems and tokenizer
-choices can affect these counts, so multilingual products need more than one
-rule of thumb.
+| Platform / path | Start here |
+| --- | --- |
+| Local browser | `python3 -m http.server 4173 --bind 127.0.0.1 --directory dist` |
+| Hosted prototype | [Open with owner access](https://contextfair.om-exp99.chatgpt.site) |
 
-ContextFair brings three steps into one interface: compare fast estimates,
-inspect their effect on a shared budget, and measure Qwen on demand. It helps
-developers and students inspect this tradeoff before deciding how to manage
-history. It does not itself trim conversations or change a model's context window.
-
-## Try it locally
-
-Requirements: Git, Python 3, and a modern browser with JavaScript, ES modules,
-and module Web Workers. Node.js 18+ is needed only for the tests.
+Open http://127.0.0.1:4173, select हिन्दी, and adjust the reply reserve. Built-in example messages let you try it without entering personal text. Exact counting first downloads about 19 MB of tokenizer assets plus library code.
 
 ```bash
-git clone https://github.com/OmTheLast/contextfair.git
-cd contextfair
 python3 -m http.server 4173 --bind 127.0.0.1 --directory dist
 ```
 
-Open **http://127.0.0.1:4173/**. Stop the server with Ctrl+C. If the port is in
-use, replace `4173` with `4174` and open that port instead.
+## Why
 
-No package installation, API key, paid inference, or build step is required.
-Serve the app over HTTP; opening `index.html` as a file will not reliably load
-its modules and worker. First-time exact measurement requires internet access
-to jsDelivr and Hugging Face and downloads roughly 19 MB of tokenizer files
-plus library code. Only tokenizer files are loaded, not model weights.
+You need room for conversation history and a response, but a character-count rule can misestimate multilingual text. ContextFair compares five estimate profiles with one explicitly requested exact Qwen count. It does not prune history or measure complete provider chat prompts.
 
-## A one-minute walkthrough
+## Explore the budget
 
-1. Choose **हिन्दी**. Read the five estimated counts for the same message.
-2. Select a **4,096** context window and **1,024** reply reserve. This leaves
-   **3,072** input tokens. Each row shows estimated space used and remaining.
-3. Click **Measure exact Qwen count**. After the initial download, the panel
-   reports the measured count, Qwen estimate, difference, and tokenizer revision.
-4. Read the explanation beneath the result. Change the reserve to **2,048**:
-   the input budget becomes **2,048**, and the measured budget explanation updates.
-5. Edit the text. The old exact result disappears until you measure again.
-   Open **Method & privacy** for the scope and limitations of these counts.
+A 4,096-token scenario with 1,024 reserved for a reply leaves 3,072 for input. Change the reserve and compare the remaining space; this is a hypothetical shared window, not a model capability claim.
 
-The language buttons contain illustrative messages, not evaluation data. Their
-wording and lengths differ; comparing them is not a controlled fairness study.
+## Measure the same text
 
-## What works today
+Exact counting uses a pinned tokenizer in a Web Worker with special tokens disabled. Editing the text invalidates the old result. The documented Hindi demo measured 36 tokens against an estimate of 33; that is an integration observation, not a general accuracy result.
 
-| Capability | Scope |
-| --- | --- |
-| Instant estimates | Qwen, Gemma, LFM, Bonsai, and MiniCPM family profiles |
-| Exact measurement | One pinned Qwen tokenizer, explicitly requested by the user |
-| Budget exploration | Shared hypothetical context window minus reserved response space |
-| Result explanation | Estimate error and remaining space based on the measured Qwen count |
-| Script composition | Counts Unicode code points in coarse script classes |
-| Browser interaction | Loading, error/retry, empty input, and stale-result handling |
+## Notes from building it
 
-## How it works
+I moved exact counting into a worker to keep it off the interface thread. Changed text clears the old measurement so a stale result cannot appear current. I would next add chat-template accounting and more exact tokenizers, with separate evidence for each.
 
-The app is buildless HTML, CSS, and JavaScript. All text analysis runs in the
-visitor's browser. The exact tokenizer runs in a Web Worker, a background browser
-task that keeps its work off the main interface thread.
+## Commands
 
-```text
-Entered text → script classification → five weighted estimates → budget rows
-     └─ on request → browser worker → pinned Qwen tokenizer → measured result
-Context window − reply reserve → input budget → remaining space / overflow
+```bash
+python3 -m http.server 4173 --bind 127.0.0.1 --directory dist  # run the app
+node --test tests/core.test.mjs                             # run product tests
 ```
 
-- `dist/core.mjs`: script classification, estimator weights, arithmetic, and
-  measured-result explanation. Each estimate rounds up the sum of script-class
-  counts multiplied by profile weights.
-- `dist/app.js`: input handling, display updates, and worker messages.
-  Changing the text invalidates its previous exact result.
-- `dist/exact-tokenizer-worker.js`: loads the tokenizer on demand and counts
-  `encode(text, { add_special_tokens: false })` output IDs.
-- `dist/index.html` and `dist/styles.css`: interface, walkthrough, method dialog,
-  responsive layout, and reduced-motion support.
-- `tests/core.test.mjs`: dependency-free Node tests.
-
-Exact runtime: **Transformers.js 3.8.1**. Tokenizer:
-[`onnx-community/Qwen3.5-4B-ONNX-OPT`](https://huggingface.co/onnx-community/Qwen3.5-4B-ONNX-OPT/tree/57b13b4dce7be073be0df3eaf1c842a6bbb2e0a7),
-revision `57b13b4dce7be073be0df3eaf1c842a6bbb2e0a7`.
-Pinning a revision fixes which tokenizer files are requested, making the count
-reproducible. See the [Transformers.js tokenizer API](https://huggingface.co/docs/transformers.js/api/tokenizers).
-
-## Verification and limits of the evidence
+## Verify it yourself
 
 ```bash
 node --test tests/core.test.mjs
 ```
 
-Tests cover representative script classification, Unicode code-point handling,
-budget arithmetic, estimate comparison, and measured-result explanations. The
-worker configuration check verifies pinned settings; it does not download
-the tokenizer or replace a browser check.
+Tests cover script buckets, Unicode code points, budget arithmetic, and result explanations. Browser checks dated October 18 are recorded in [the page review](docs/PAGE_REVIEW.md); the Node tests do not download or execute the exact tokenizer.
 
-On October 16, 2026, local and deployed browser checks reproduced a public
-LocalMind reference result: **35 measured tokens versus 43 estimated**,
-an overestimate of **8 tokens / 22.9%**. This is an integration check against a
-known reference, not an unseen benchmark or general accuracy score. Round
-records under `recovery/` document checks and their limitations.
+## Credits, license and pointers
 
-On October 18, the deployed Hindi demo measured **36 tokens versus 33 estimated**.
-Desktop and mobile review verified the revised result explanation, reserve changes,
-stale-result behavior, and the method dialog. See the [review record](docs/PAGE_REVIEW.md)
-for exact settings, screenshots, and the script-bucket wording issue.
+Estimator adapted from Chirag Patnaik’s [LocalMind](https://github.com/NakliTechie/LocalMind); runtime uses Transformers.js and Qwen tokenizer assets. Application work by Om Patnaik for EurekaDev 2026, assisted by Codex. [MIT](LICENSE) · [Third-party notice](NOTICE.md).
 
-## Privacy and network use
-
-ContextFair's application code does not upload entered text, save it between
-visits, or send it to an inference API. Text is passed locally to the worker.
-There are no application analytics or account features; the hosting platform
-controls access to the private prototype.
-
-The page requests Google Fonts. Exact measurement requests library code from
-jsDelivr and tokenizer assets from Hugging Face. These services and the host see
-normal network metadata. Browser caching depends on settings and storage;
-offline operation is not guaranteed. If an exact download fails, estimates
-remain usable and the measurement can be retried.
-
-## Limitations
-
-- Exact means the count for this tokenizer and settings. Counts omit chat
-  templates, special tokens, system prompts, tools, and provider-specific billing.
-- Five comparison rows always show estimates; measuring Qwen does not replace
-  them. Profile names do not promise accuracy for every release in a model family.
-- The shared context window is a user-selected scenario, not a verified limit
-  for each model. This version does not import or prune chat history.
-- Script classes are coarse Unicode ranges, not language detection. Mixed text,
-  emoji, code, or unrepresented scripts can expose estimator weaknesses.
-- Smaller token counts do not establish better answers, cultural understanding,
-  or fairness. No broad accuracy result or user-impact study is claimed.
-  Large inputs and slow devices may take longer to measure.
-
-## Original work, research boundary, and attribution
-
-ContextFair began as an application on October 11, 2026. Its interface, budget
-workflow, worker integration, explanatory copy, and product tests are application
-work. The script classifier and fitted profile weights are adapted from the
-MIT-licensed [LocalMind](https://github.com/NakliTechie/LocalMind) estimator by
-Chirag Patnaik, revision `b39f0bc145a0c0926ba22247ee31cd369e0445b6c`.
-
-The independent [Tokenizer Estimation Study](https://github.com/OmTheLast/Tokenizer-estimation-study)
-informed the project; its datasets, experiments, and research claims remain
-separate. Running ContextFair does not require a study checkout. See
-[the product/research boundary](docs/PRODUCT_BOUNDARY.md) and [third-party notice](NOTICE.md).
-
-Development and documentation were assisted by OpenAI Codex. The repository
-records implementation and verification work; AI assistance does not establish
-correctness or originality of upstream components.
-
-Application license: [MIT](LICENSE). Third-party components retain their own
-licenses and attribution.
-
-## Next steps
-
-Rehearse the prepared script, record the video, and review the submission draft. Release the demo
-for judges after owner review. Potential future product work includes additional
-exact tokenizers and explicit chat-template budgeting; those features are not
-part of this prototype.
-
+[Full setup, original notes, and project history](README-DETAILS.md).
