@@ -1,8 +1,24 @@
 # ContextFair recovery checkpoint
 
-Updated: 2026-10-20 (Asia/Kolkata)
+Updated: 2026-10-21 (Asia/Kolkata)
 
-Status: **conversation planner live; Devpost contact email saved; video and submission pending**
+Status: **SUBMITTED to EurekaDev 2026; video attached and confirmation verified**
+
+October 21 final submission:
+- User supplied https://youtu.be/vHWGwvI4W58; YouTube player duration is 3:34.
+- Saved the video on the existing Devpost project; all four preparatory steps
+  complete. Live app/repository URLs, story, tags, track/category and contact
+  email present. Discord and optional gallery remain blank.
+- At the final checkbox, user explicitly confirmed agreement to Official Rules
+  and Devpost Terms and authorized submission. Checked agreement and submitted.
+- Devpost displayed "Project submitted!" and "SUBMITTED TO EurekaDev 2026".
+- Public project: https://devpost.com/software/context-fair.
+- Verified page iframe embeds the supplied video ID vHWGwvI4W58.
+- Confirmation screenshot saved privately at /private/tmp/contextfair-submitted.jpg.
+- No runtime code change. Recording script remains private and ignored.
+- Required submission work complete; no further action currently needed.
+
+Earlier checkpoints below are historical:
 
 Latest follow-up: user requests recording narration privately in chat, not on
 GitHub. Removed the tracked script and its active documentation links, plus the
