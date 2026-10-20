@@ -129,7 +129,7 @@ function measure() {
   const options = settings();
   validateConversation(options.system, messages);
   if (!worker) {
-    try { worker = new Worker("./exact-tokenizer-worker.js", { type: "module" }); }
+    try { worker = new Worker("./exact-tokenizer-worker.js?v=planner-1", { type: "module" }); }
     catch { $("#conversation-measure-status").textContent = "Worker unavailable. Estimates still work."; return; }
     worker.addEventListener("message", event => {
       const data = event.data || {};

@@ -81,7 +81,7 @@ function measureExact() {
     return;
   }
   if (!exactWorker) {
-    exactWorker = new Worker("./exact-tokenizer-worker.js", { type: "module" });
+    exactWorker = new Worker("./exact-tokenizer-worker.js?v=planner-1", { type: "module" });
     exactWorker.addEventListener("message", event => {
       const data = event.data || {};
       if (data.requestId !== exactRequest) return;
