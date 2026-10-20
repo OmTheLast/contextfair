@@ -1,8 +1,20 @@
 # ContextFair recovery checkpoint
 
-Updated: 2026-10-18 (Asia/Kolkata)
+Updated: 2026-10-20 (Asia/Kolkata)
 
 Status: **deployed page reviewed; demo script and Devpost draft prepared**
+
+October 20: recording guidance added to docs/DEMO_SCRIPT.md, including Mac
+microphone/capture setup, an audio test, timing buffer and post-recording checks.
+Current deployed page controls were inspected without changing UI state; exact
+measurement was not rerun. Rehearsal counts remain the October 18 observations.
+No recording, upload, submission or access change has been performed.
+Record: rounds/2026-10-20-recording-preparation.json.
+
+October 19: inspected the implementation to prepare a plain-English engineering
+explanation for Om's judge rehearsal. No application or deployment changes;
+tests were not rerun. Record: rounds/2026-10-19-judge-engineering-brief.json.
+Submission tasks below remain unchanged.
 
 ## Request
 
@@ -91,8 +103,9 @@ stale-result behavior, and mobile method access were verified. No horizontal
 overflow or captured console warnings/errors appeared. Review notes and actual
 screenshots are in docs/PAGE_REVIEW.md and docs/screenshots/.
 
-docs/DEMO_SCRIPT.md contains 404 spoken words (about 2:53 at 140 words/minute,
-before clicks/pauses); target 3:30. docs/DEVPOST_DRAFT.md contains the prepared
+docs/DEMO_SCRIPT.md contains the spoken narration and recording checklist;
+target 3:30 including clicks and pauses, to be confirmed with a timed rehearsal.
+docs/DEVPOST_DRAFT.md contains the prepared
 description and separate submission operator notes. English is the current
 narration default. Documents are linked from README and JUDGE_GUIDE.
 

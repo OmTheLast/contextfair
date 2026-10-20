@@ -6,6 +6,16 @@ Only quoted paragraphs are spoken; directions and headings are not narration.
 
 ## Before recording
 
+- Use screen plus your own voice; a webcam and slides are optional. Target 3:30,
+  with a buffer below the [four-minute maximum](https://eurekadev.devpost.com/).
+- On Mac, press Shift–Command–5, choose Record Selected Portion, frame only the
+  app, then choose your microphone under Options. Stop with Command–Control–Esc
+  or the menu-bar Stop button. See [Apple's recording guide](https://support.apple.com/en-au/102618).
+- Make a ten-second test and play it back before the full take. Confirm audible
+  speech and readable text. Keep this script on a phone or outside the capture area.
+- Have the GitHub README open in another tab before starting. Keep the browser
+  content area in the same recording region when switching to it.
+
 - Open the deployed app in the owner's session or run locally using the README.
 - Use a desktop browser. Hide unrelated tabs, notifications, and account details.
 - Choose हिन्दी, set window 4,096 and reply reserve 1,024, and measure once to
@@ -14,12 +24,17 @@ Only quoted paragraphs are spoken; directions and headings are not narration.
   investigate the input/settings rather than reading numbers that disagree.
 - Keep the actual measurement and screen actions visible. Record the finished
   video under four minutes; trim pauses, not disclosures or evidence.
+- Do not describe the script chart as detected languages: its Latin bucket
+  includes spaces. Focus the demo on estimates, measurement, and budget.
+- Timing marks below are guides, not measured recording durations. If a take is
+  too long, shorten pauses or retake; do not rush the evidence or remove credits.
 
 ## 0:00–0:30 — The problem
 
 **Show:** hero, then click “Try the one-minute walkthrough.”
 
-> AI conversations have limited space. Models count that space in tokens—pieces
+> Hi, I'm Om, and this is ContextFair. AI conversations have limited space.
+> Models count that space in tokens—pieces
 > of text, rather than simply words. If a chat app estimates too high, it may
 > remove useful history early. If it estimates too low, it may admit more text
 > than fits. ContextFair helps people building multilingual AI tools inspect
@@ -74,7 +89,8 @@ edit the input to “एक नया संदेश।” and show the old res
 
 > The application uses HTML, CSS, and JavaScript. Exact counting runs in a browser
 > worker using Transformers.js and a pinned Qwen tokenizer. It needs no inference
-> API key. The code does not upload entered text, although downloading fonts and
+> API key. The worker keeps tokenization off the main interface thread.
+> The code does not upload entered text, although downloading fonts and
 > tokenizer assets still makes network requests.
 >
 > These counts cover the entered text. Chat formatting, system instructions, and
@@ -84,8 +100,8 @@ edit the input to “एक नया संदेश।” and show the old res
 
 **Show:** README attribution, then return to the app.
 
-> ContextFair combines estimates, budget planning, and verification in one
-> workflow. The estimator is adapted from MIT-licensed LocalMind work. A separate
+> My application contribution is the interface, budget workflow, and verification
+> integration. The estimator is adapted from MIT-licensed LocalMind work. A separate
 > tokenizer study informed the project, and Codex assisted development and
 > documentation. Future work includes more exact tokenizers and chat-template
 > budgeting. The goal is to make context decisions easier to inspect before
@@ -96,3 +112,12 @@ edit the input to “एक नया संदेश।” and show the old res
 Save the final video, confirm its duration and audio, upload it to a location
 judges can access, and use that URL in the Devpost video field. No video has been
 recorded or uploaded by preparing this script. See DEVPOST_DRAFT.md for text.
+
+Before upload, watch the complete take. Check that spoken numbers match the
+visible results, the result is readable for a few seconds, no private information
+appears, and the final credits are audible. After upload, test the viewing link
+while logged out; an owner-visible preview is not sufficient.
+
+If measurement fails during rehearsal, stop and troubleshoot before the final
+take. Do not narrate an expected count over an error or pass a saved screenshot
+off as a successful live measurement.
