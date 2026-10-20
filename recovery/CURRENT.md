@@ -4,6 +4,12 @@ Updated: 2026-10-20 (Asia/Kolkata)
 
 Status: **deployed page reviewed; demo script and Devpost draft prepared**
 
+October 20 final narration: DEMO_SCRIPT now includes the plain-language weighted
+character estimator explanation between comparison and budgeting. Product-only
+close retained; no "My contribution" section. Target 3:35, pending timed rehearsal.
+No app changes, recording or submission. GitHub synchronization remains pending.
+Record: rounds/2026-10-20-final-demo-script.json.
+
 October 20 provenance clarification: verified the reused LocalMind coefficients
 and classifier against hash-checked upstream files. Added
 scripts/verify-estimator-source.mjs and a worked Hindi calculation to README;

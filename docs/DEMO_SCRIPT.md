@@ -1,6 +1,6 @@
 # ContextFair demo script
 
-Draft for Om's review. English narration; target about 3:30 including clicks and
+Final recording script. English narration; target about 3:35 including clicks and
 short pauses. The event maximum is four minutes. Time a rehearsal before recording.
 Only quoted paragraphs are spoken; directions and headings are not narration.
 
@@ -29,74 +29,91 @@ Only quoted paragraphs are spoken; directions and headings are not narration.
 - Timing marks below are guides, not measured recording durations. If a take is
   too long, shorten pauses or retake; do not rush the evidence.
 
-## 0:00–0:30 — The problem
+## 0:00–0:25 — The problem
 
 **Show:** hero, then click “Try the one-minute walkthrough.”
 
-> Hi, I'm Om, and this is ContextFair. AI conversations have limited space.
-> Models count that space in tokens—pieces
-> of text, rather than simply words. If a chat app estimates too high, it may
-> remove useful history early. If it estimates too low, it may admit more text
-> than fits. ContextFair helps people building multilingual AI tools inspect
-> that tradeoff.
+> Hi, I'm Om, and this is ContextFair.
+>
+> AI conversations have limited space, measured in tokens—pieces of text.
+> If an app overestimates a message's size, it might remove useful history too
+> early. If it underestimates, the text might exceed its budget.
+> ContextFair makes that tradeoff visible.
 
-## 0:30–1:00 — Compare estimates
+## 0:25–0:45 — Compare estimates
 
 **Show:** select हिन्दी. Point to the input and five estimated rows.
 
-> Here is an illustrative Hindi message. ContextFair gives five quick estimates
-> for the same text, from twenty-one to ninety-six tokens. These are model-family
-> profiles, and every row is labelled as an estimate. That difference is a reason
-> to verify a count, not proof that one model gives better answers.
+> I'll choose this Hindi example. The same text produces five estimates,
+> ranging from twenty-one to ninety-six tokens.
+> These are estimates for different model-family profiles—not five exact
+> measurements, and not a ranking of model quality.
 
-## 1:00–1:25 — Set the budget
+## 0:45–1:15 — Explain the estimator
+
+**Show:** Keep the Hindi input and Qwen's 33-token estimate visible. Point to the
+Qwen row. The worked calculation is in the local README if needed for questions;
+do not rely on its GitHub version until pending changes have been synced.
+
+> How are these estimates calculated? The app groups characters by writing
+> system, counts each group, and multiplies those counts by model-specific
+> weights. It adds the results and rounds up.
+>
+> For this Hindi message, Qwen's weighted total is about thirty-two point three,
+> giving an estimate of thirty-three. It's a lightweight approximation:
+> it doesn't actually split the text into tokens.
+
+## 1:15–1:40 — Set the budget
 
 **Show:** context window 4,096; reply reserve 1,024.
 
-> I am choosing a hypothetical window of four thousand and ninety-six tokens,
-> and reserving one thousand and twenty-four for the reply. That leaves three
-> thousand and seventy-two for input. The rows show how much of that space each
-> estimate would use. This shared setting is a scenario, not every model's
-> advertised limit.
+> I'll set a hypothetical context window of four thousand and ninety-six tokens,
+> reserving one thousand and twenty-four for the reply.
+> That leaves three thousand and seventy-two for input.
+> Each row shows estimated usage and remaining space. This is a shared scenario,
+> not every model's actual context limit.
 
-## 1:25–2:05 — Measure and explain
+## 1:40–2:20 — Measure and explain
 
 **Show:** click “Measure exact Qwen count” or “Measure again.” Scroll to the
 measured panel and pause. On first use, allow loading to finish.
 
-> Now I can check Qwen with a real tokenizer. On first use, the browser downloads
-> about nineteen megabytes of tokenizer files plus the library. I have loaded
-> those for this recording. The entered text is processed here in the browser.
+> Now I'll check the estimate with the actual Qwen tokenizer.
+> First use downloads about nineteen megabytes of tokenizer files, plus library
+> code. I've loaded those before recording. This is tokenization, not running
+> the full AI model.
 >
-> For this message, the estimate is thirty-three tokens and the measured count
-> is thirty-six. The estimate misses three tokens, about eight point three
-> percent. The explanation turns that into a budget decision: this message leaves
-> three thousand and thirty-six input tokens available.
+> The estimate is thirty-three; the measured count is thirty-six.
+> That's an underestimate of three tokens, or eight point three percent.
+> Using the measured count, this text leaves three thousand and thirty-six
+> input tokens available. That's the practical consequence of checking.
 
-## 2:05–2:30 — Change the decision
+## 2:20–2:45 — Change the budget and text
 
 **Show:** change reply reserve to 2,048. Point to the updated explanation, then
 edit the input to “एक नया संदेश।” and show the old result disappearing.
 
-> If I reserve more space for the reply, the available input budget shrinks and
-> the explanation updates. Now two thousand and twelve tokens remain after this
-> message. If I change the text, the old measurement disappears. I need a new
-> measurement before relying on that result.
+> Reserving more space for the reply reduces the input budget.
+> Now two thousand and twelve tokens remain after this message.
+>
+> If I edit the text, the old measurement disappears.
+> That prevents a result for the previous message from being mistaken for the
+> current one.
 
-## 2:30–3:05 — Explain the implementation and limits
+## 2:45–3:15 — Explain the engineering and limits
 
 **Show:** Method & privacy, then the README's architecture.
 
-> The application uses HTML, CSS, and JavaScript. Exact counting runs in a browser
-> worker using Transformers.js and a pinned Qwen tokenizer. It needs no inference
-> API key. The worker keeps tokenization off the main interface thread.
-> The code does not upload entered text, although downloading fonts and
-> tokenizer assets still makes network requests.
+> The app uses HTML, CSS, and JavaScript.
+> Transformers.js runs the tokenizer in a background browser worker,
+> keeping tokenization off the interface thread.
+> The tokenizer version is fixed so we know which version produced the count.
 >
-> These counts cover the entered text. Chat formatting, system instructions, and
-> provider billing are excluded. Only Qwen has exact measurement in this version.
+> Entered text is processed locally, although asset downloads use the internet.
+> Exact measurement currently supports Qwen only and excludes chat formatting
+> and system instructions.
 
-## 3:05–3:25 — Next steps and close
+## 3:15–3:35 — Close
 
 **Show:** Return to the app.
 
