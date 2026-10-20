@@ -2,15 +2,21 @@
 
 Updated: 2026-10-20 (Asia/Kolkata)
 
-Status: **public access enabled; normal-browser release verification in progress**
+Status: **public demo deployed and verified in Chrome**
 
 October 20 public release: user explicitly requested a normal-browser demo
 without owner access. Sites access changed from custom owner-only to public,
 policy revision 2. Anonymous curl (no cookies or auth headers) returned HTTP 200
 at the unchanged demo URL, with app HTML and no sign-in redirect. Opened the
-live app in Chrome and began exact-measurement verification. Updated the footer
-and current instructions to public access; packaging/deployment of those text
-changes is in progress. Earlier private-state records below are historical.
+live app in Chrome and verified exact Qwen measurement: 36 measured, 33 estimated,
+3,036 tokens remaining at the recording budget. Updated the footer and current
+instructions to public access and deployed version 5 successfully from commit
+0246b66a9ec43fd78784631aea3262c19c54130d, deployment
+appgdep_6ad79aa3f0b88191ace3dbbb02f5251a. Post-deployment anonymous page, app.js
+and worker requests returned HTTP 200; page includes "Public demo". Chrome
+repeated the correct exact result after reloading. Screenshot:
+docs/screenshots/public-chrome-demo.jpg. Eight tests passed. The Chrome demo
+tab is retained for recording. Earlier private-state records below are historical.
 Record: rounds/2026-10-20-public-release.json.
 
 October 20 final narration: DEMO_SCRIPT now includes the plain-language weighted
@@ -129,6 +135,11 @@ study an independent research project.
   43 estimated, 8 / 22.9% over) with no browser warnings or errors.
 
 ## Exact next action
+
+Record using the public Chrome demo and current DEMO_SCRIPT.md; no owner login
+or Codex browser is required. Final video and Devpost submission are still pending.
+GitHub remote divergence remains unresolved, but the Sites source and deployment
+have been successfully updated. The following describes the earlier review:
 
 The October 18 presentation pass is deployed from commit
 `33c32efa4a9604fbcd68207d90119c43937abc25`.

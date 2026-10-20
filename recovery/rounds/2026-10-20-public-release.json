@@ -10,7 +10,18 @@
   ],
   "url": "https://contextfair.om-exp99.chatgpt.site",
   "project_id": "appgprj_6acb864b26b08191b2c87a336a6b9cfd",
-  "remaining": "Complete Chrome exact measurement, deploy footer change, verify public static assets and record final evidence.",
-  "next_action": "Package and publish source through the existing Site workflow.",
+  "verification": {
+    "deployment": "succeeded",
+    "deployment_id": "appgdep_6ad79aa3f0b88191ace3dbbb02f5251a",
+    "version_id": "appgprj_6acb864b26b08191b2c87a336a6b9cfd~appgver_35dbaca412b081918083de4895af23e5",
+    "source_commit": "0246b66a9ec43fd78784631aea3262c19c54130d",
+    "anonymous_http": "Page, app.js and exact-tokenizer-worker.js each returned 200 without cookies or auth headers; no sign-in redirect.",
+    "browser": "Chrome; Hindi 36 measured versus 33 estimated, under by 3 / 8.3%, 3036 remaining. Repeated successfully after final deployment.",
+    "footer": "Public demo · EurekaDev 2026",
+    "tests": "8 passed",
+    "screenshot": "docs/screenshots/public-chrome-demo.jpg"
+  },
+  "remaining": "Video recording/upload and submission. Separate GitHub remote divergence still needs reconciliation; Sites source and deployment updated successfully.",
+  "next_action": "Record in the retained Chrome tab using the current demo script.",
   "credentials": "Kept in session memory only; not saved."
 }
