@@ -53,8 +53,7 @@ Only quoted paragraphs are spoken; directions and headings are not narration.
 ## 0:45–1:15 — Explain the estimator
 
 **Show:** Keep the Hindi input and Qwen's 33-token estimate visible. Point to the
-Qwen row. The worked calculation is in the local README if needed for questions;
-do not rely on its GitHub version until pending changes have been synced.
+Qwen row. The worked calculation is in README-DETAILS.md if needed for questions.
 
 > How are these estimates calculated? The app groups characters by writing
 > system, counts each group, and multiplies those counts by model-specific

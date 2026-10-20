@@ -1,7 +1,7 @@
-# Devpost submission draft
+# Devpost submission copy
 
-Prepared October 18, 2026. Review before copying into Devpost. Nothing has been
-submitted. The About section below is ready to paste as project prose; the final
+Updated October 20, 2026. Ready for final review and copying into Devpost; nothing
+has been submitted. The About section below is project prose; the final
 section contains operator notes and is not part of the project description.
 
 ## Project name
@@ -28,6 +28,9 @@ mean for the space left in an AI conversation?
 
 ### What it does
 
+[Try the public demo](https://contextfair.om-exp99.chatgpt.site)—no sign-in or
+installation required.
+
 ContextFair lets a user paste text or choose an illustrative multilingual example,
 compare five model-family estimates, set a hypothetical context window, and
 reserve space for a reply. Each row shows estimated usage and remaining space.
@@ -43,15 +46,16 @@ tokenizer measures 36: an underestimate of three tokens, or 8.3%. With a
 3,036 tokens available. This illustrates the workflow; it is not a general
 accuracy score or a controlled comparison between languages.
 
-### How we built it
+### How it was built
 
 The application uses buildless HTML, CSS, and JavaScript. Instant estimates use
 script-aware profile weights adapted from the MIT-licensed LocalMind estimator.
 The estimator counts Unicode code points by script bucket, multiplies each
-count by a model-profile weight, adds the results, and rounds up. The README's
-[worked calculation and source check](https://github.com/OmTheLast/contextfair#estimator-calculation-and-evidence)
+count by a model-profile weight, adds the results, and rounds up. The
+[worked calculation and source check](https://github.com/OmTheLast/contextfair/blob/main/README-DETAILS.md#estimator-calculation-and-evidence)
 explain the Hindi estimate of 33; the actual tokenizer measured 36 in our demo
-review. This example is not an overall accuracy score.
+review.
+
 Exact counting runs in a browser Web Worker using Transformers.js 3.8.1 and the
 Qwen tokenizer at a fixed repository revision. It downloads tokenizer assets on
 demand without loading model weights or calling an inference API.
@@ -61,7 +65,7 @@ explanation, and handling for loading, errors, retries, and stale results. The
 application code processes entered text locally. Font, library, and tokenizer
 downloads still involve requests to external services.
 
-### Challenges we ran into
+### Challenges
 
 The main design challenge was explaining an estimate without making it look like
 an exact measurement. The comparison rows and verification panel are separated
@@ -73,15 +77,21 @@ visible during loading. Correcting that behavior made the download and result
 states clearer. The roughly 19 MB tokenizer download made on-demand loading and
 an understandable progress state important.
 
-### Accomplishments we're proud of
+### Accomplishments
 
-The prototype connects a token-count difference to a concrete budget decision in
-one browser workflow. Eight automated tests pass. Desktop and mobile checks on
+The application connects a token-count difference to a concrete budget decision
+in one browser workflow. Its distinctive feature is the path from quick estimate
+to actual measurement to remaining conversation space, rather than a new
+tokenization algorithm.
+
+Eight automated tests pass. Desktop and mobile checks on
 the deployed app confirmed measurement, reserve changes, stale-result handling,
 and access to the method dialog. The source includes setup instructions,
-attribution, limitations, and recovery records.
+attribution, and limitations. On October 20, anonymous access to the public page
+and its application assets succeeded, and the Hindi measurement was repeated in
+Chrome outside the development environment.
 
-### What we learned
+### Lessons learned
 
 A count becomes useful when a person can understand what decision it changes.
 For this application, that means showing how much room remains and explaining
@@ -128,10 +138,12 @@ not an inference dependency of the running application.
 - Hosted demo: https://contextfair.om-exp99.chatgpt.site — public as of October 20.
   Anonymous HTTP access was verified without cookies or authorization headers.
   No Codex browser is required. The README also includes local setup.
-- Verify public repository visibility and judge access before submitting.
-- Review authorship/credits and replace template plural headings if desired;
-  no team roster or participant eligibility has been asserted in this draft.
+- Source visibility: GitHub's unauthenticated API confirmed the repository is
+  public on October 20. Verify the final uploaded video link while logged out.
+- Paste the elevator pitch, About section, and Built with items into their
+  matching fields. Do not paste these operator notes into the project story.
+- No participant eligibility or completed registration is asserted here.
 - Confirm participant registration, age/student eligibility, and Discord
   membership separately. No submissions or external messages were sent.
 - Requirements: https://eurekadev.devpost.com/ and
-  https://eurekadev.devpost.com/rules (checked October 18, 2026).
+  https://eurekadev.devpost.com/rules (checked October 20, 2026).

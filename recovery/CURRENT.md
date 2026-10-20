@@ -4,6 +4,15 @@ Updated: 2026-10-20 (Asia/Kolkata)
 
 Status: **public demo deployed and verified in Chrome**
 
+October 20 submission sync: fetched GitHub commit 05bce4b and reconciled its
+compact README/detail-file layout with the latest public-access and evidence
+changes. GitHub anonymous API confirms public visibility. Devpost prose, source
+links and checklist updated. Eight tests and estimator source checks pass; 28
+relative document links resolve; bounded credential scan found no matches.
+Runtime files match deployed commit 0246b66 exactly. Merge commit and push are
+pending. No live app changes or browser interaction while Om records.
+Record: rounds/2026-10-20-submission-sync.json.
+
 October 20 public release: user explicitly requested a normal-browser demo
 without owner access. Sites access changed from custom owner-only to public,
 policy revision 2. Anonymous curl (no cookies or auth headers) returned HTTP 200
