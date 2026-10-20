@@ -28,7 +28,7 @@ mean for the space left in an AI conversation?
 
 ### What it does
 
-[Try the public demo](https://contextfair.om-exp99.chatgpt.site)—no sign-in or
+[Try the public demo](https://ompatnaik.com/contextfair/)—no sign-in or
 installation required.
 
 ContextFair lets a user paste text or choose an illustrative multilingual example,
@@ -126,7 +126,7 @@ Sources: [ContextFair code and README](https://github.com/OmTheLast/contextfair)
 ## Built with
 
 JavaScript, HTML5, CSS3, Web Workers, Hugging Face Transformers.js, Qwen tokenizer,
-Node.js (tests), GitHub, OpenAI Sites (hosting). Codex was development assistance,
+Node.js (tests), GitHub, GitHub Pages (hosting). Codex was development assistance,
 not an inference dependency of the running application.
 
 ## Submission operator notes — do not paste into About
@@ -135,9 +135,9 @@ not an inference dependency of the running application.
 - Source URL: https://github.com/OmTheLast/contextfair
 - Video: record using DEMO_SCRIPT.md, check duration <=4 minutes, and supply the
   actual accessible video URL. No video link exists yet in this draft.
-- Hosted demo: https://contextfair.om-exp99.chatgpt.site — public as of October 20.
-  Anonymous HTTP access was verified without cookies or authorization headers.
-  No Codex browser is required. The README also includes local setup.
+- Hosted demo: https://ompatnaik.com/contextfair/ — GitHub Pages, public as of
+  October 20. Anonymous HTTPS access was verified without cookies or authorization
+  headers. Runs in a normal browser. The README also includes local setup.
 - Source visibility: GitHub's unauthenticated API confirmed the repository is
   public on October 20. Verify the final uploaded video link while logged out.
 - Paste the elevator pitch, About section, and Built with items into their

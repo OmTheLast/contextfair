@@ -2,15 +2,15 @@
 
 **Compare token estimates, reserve room for a reply, and check the result against a pinned Qwen tokenizer.**
 
-[Open the public demo](https://contextfair.om-exp99.chatgpt.site) · [Demo script](docs/DEMO_SCRIPT.md) · [Devpost description](docs/DEVPOST_DRAFT.md)
+[Open the public demo](https://ompatnaik.com/contextfair/) · [Demo script](docs/DEMO_SCRIPT.md) · [Devpost description](docs/DEVPOST_DRAFT.md)
 
-Runs in a normal modern browser—no sign-in, Codex browser, API key, or installation required for the hosted demo. Entered text is processed locally; fonts, libraries, and tokenizer files load from external hosts.
+Hosted on GitHub Pages at **ompatnaik.com/contextfair/**. Runs in a normal modern browser—no sign-in, API key, or installation required. Entered text is processed locally; fonts, libraries, and tokenizer files load from external hosts.
 
 By Om Patnaik · EurekaDev 2026 · Coding Track · Computer Science + AI.
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-176b75?style=flat-square)](LICENSE)
 
-![ContextFair Hindi example showing measured tokens and estimated context usage](docs/screenshots/public-chrome-demo.jpg)
+![ContextFair Hindi example on GitHub Pages showing measured tokens and estimated context usage](docs/screenshots/github-pages-demo.jpg)
 
 ## Run locally
 

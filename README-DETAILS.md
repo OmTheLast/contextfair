@@ -9,15 +9,24 @@ is the space available for its input and response.
 
 Built for **EurekaDev 2026 · Coding Track · Computer Science + AI**.
 
-[Hosted prototype](https://contextfair.om-exp99.chatgpt.site) ·
+[Live application](https://ompatnaik.com/contextfair/) ·
 [Demo and pitch guide](docs/JUDGE_GUIDE.md) · [Attribution](NOTICE.md) · [MIT license](LICENSE)
 
 [Spoken demo script](docs/DEMO_SCRIPT.md) · [Devpost draft](docs/DEVPOST_DRAFT.md) ·
 [Page review and screenshots](docs/PAGE_REVIEW.md)
 
-**Demo access:** the hosted app is public and requires no owner account or Codex
-browser. Open the demo URL in a modern browser. Anonymous HTTP access was verified
-on October 20, 2026. Local setup remains available below.
+**Demo access:** the app is hosted independently on GitHub Pages at
+**https://ompatnaik.com/contextfair/** and requires no sign-in. Open the demo URL
+in a modern browser. Anonymous HTTPS access was verified on October 20, 2026.
+Local setup remains available below.
+
+## Deployment
+
+[The Pages workflow](.github/workflows/pages.yml) runs the eight application tests
+and publishes only `dist/` after changes to application files on `main`. It can
+also be started manually from GitHub Actions. No backend server or ChatGPT hosting
+is needed. The domain is inherited from the account's existing GitHub Pages
+configuration; no DNS settings were changed for this deployment.
 
 ## Why it matters
 

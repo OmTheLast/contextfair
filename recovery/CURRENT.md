@@ -2,17 +2,26 @@
 
 Updated: 2026-10-20 (Asia/Kolkata)
 
-Status: **migrating to GitHub Pages; independent live link not yet verified**
+Status: **independent GitHub Pages demo verified; final documentation sync pending**
 
 October 20 hosting correction: user rejects ChatGPT-branded hosting. Public
-GitHub repository confirmed and Pages enabled in workflow mode. Added a workflow
-that tests the app and publishes only dist. GitHub inherits ompatnaik.com from
-the existing account and reports certificate state bad_authz; do not promise
-the new link until anonymous HTTPS and normal-browser checks pass. No unrelated
-repository or DNS settings changed. Old hosting remains intact as fallback.
+GitHub repository confirmed and Pages enabled in workflow mode. Workflow commit
+1dfd3df40fd5d65b7c6f9382d8e5d4c828cbe0c1 was pushed; Actions run 39467444341
+completed successfully, testing the app and publishing only dist.
+New canonical demo: https://ompatnaik.com/contextfair/ (GitHub Pages behind the
+existing domain configuration). All five public runtime files returned HTTPS
+200 without authentication and matched local bytes. Normal Chrome verified
+Hindi 36 measured versus 33 estimated, 3,036 remaining, and 2,012 remaining
+after increasing reply reserve to 2,048. No captured warnings/errors.
+Screenshot: docs/screenshots/github-pages-demo.jpg. GitHub's API reports an
+inherited origin certificate bad_authz state, but direct public HTTPS and Chrome
+work without certificate warnings through the existing Cloudflare endpoint.
+No unrelated repository or DNS settings changed. Old hosting remains intact as
+fallback; current submission docs now link only to the independent new demo.
 Record: rounds/2026-10-20-github-pages.json.
-Immediate next action: test and push workflow, verify deployment/domain, then
-update current submission documentation to the verified independent link.
+Immediate next action: commit/push the updated docs and verify remote main.
+Then record on the new domain, supply the actual video URL and perform final
+submission review. No video upload or Devpost submission performed.
 
 October 20 submission sync: fetched GitHub commit 05bce4b and reconciled its
 compact README/detail-file layout with the latest public-access and evidence
