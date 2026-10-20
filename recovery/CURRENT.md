@@ -2,7 +2,7 @@
 
 Updated: 2026-10-20 (Asia/Kolkata)
 
-Status: **independent GitHub Pages demo verified; final documentation sync pending**
+Status: **independent GitHub Pages demo verified; submission documentation synchronized**
 
 October 20 hosting correction: user rejects ChatGPT-branded hosting. Public
 GitHub repository confirmed and Pages enabled in workflow mode. Workflow commit
@@ -19,9 +19,13 @@ work without certificate warnings through the existing Cloudflare endpoint.
 No unrelated repository or DNS settings changed. Old hosting remains intact as
 fallback; current submission docs now link only to the independent new demo.
 Record: rounds/2026-10-20-github-pages.json.
-Immediate next action: commit/push the updated docs and verify remote main.
-Then record on the new domain, supply the actual video URL and perform final
-submission review. No video upload or Devpost submission performed.
+Documentation commit d4e2276bfce2a6e3ccf467cad5da712bcc91ad99 was pushed and
+matched remote main. The working tree was clean; 27 local document targets
+resolved, no old-host link remained in active submission docs, and the repository
+homepage now points to the new HTTPS domain.
+Immediate next action: record on the new domain, supply the actual video URL
+and perform final submission review. No video upload or Devpost submission
+performed.
 
 October 20 submission sync: fetched GitHub commit 05bce4b and reconciled its
 compact README/detail-file layout with the latest public-access and evidence
