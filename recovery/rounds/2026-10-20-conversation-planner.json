@@ -1,6 +1,6 @@
 {
   "request": "Add useful conversation budgeting, deploy before the deadline, then fill Devpost except the video. Inspiration: user's browser-based JEE model work led to investigating tokenizer download size and multilingual token estimates.",
-  "status": "running",
+  "status": "planner deployed and verified; Devpost draft saved with email and video pending",
   "started_utc": "2026-10-20T17:54:16Z",
   "deadline_utc": "2026-10-20T22:00:00Z",
   "design": [
@@ -12,5 +12,25 @@
     "Keep GitHub Pages hosting. Do not change independent study or JEE project.",
     "Do not submit Devpost, supply video, accept terms or invent eligibility answers."
   ],
-  "next": "Implement pure budgeting functions, tests and planner UI; validate locally and live; update docs; fill available Devpost fields."
+  "completed": [
+    "Pure retention algorithm, editor, estimated and measured content plans, JSON import/export, blocked-plan safeguards.",
+    "17 tests pass; syntax and diff checks pass; unchanged estimator source verifier passes.",
+    "Local Chrome: estimate 3 kept/4 dropped; Qwen measured 1 kept/6 dropped at 256/64 with 8/16 allowances.",
+    "At window 320, both keep 3; measured plan uses 209/256. At window 100 export blocked. Editing text clears measurements.",
+    "Export saved in Downloads; checked actual JSON contains system + 3 retained messages and reimports successfully. Browser download-event tool timed out, but independent file verification passed.",
+    "Narrow viewport: no horizontal overflow (375px layout); default viewport restored.",
+    "Release 3b09e5c deployed; returning-browser cached CSS/worker issue found and fixed by versioned URLs in 570dc1c5e0165cda2d664217a2eba7057afbc537.",
+    "GitHub Actions run 39471688160 succeeded. Public Chrome verified new styling and measured retention on https://ompatnaik.com/contextfair/#planner.",
+    "README, detailed docs, judge guide, Devpost draft and recording script rewritten for planner and user-provided JEE inspiration.",
+    "Existing Devpost draft 1248565 updated: name, pitch, 6639-character story, JavaScript/HTML5/CSS3/GitHub tags, live and repository links, Coding track and Computer Science + AI category. Reopened forms and verified persisted fields.",
+    "Required contact email requested from user. Video and optional Discord left blank. Final submission and terms untouched.",
+    "Screenshot gallery upload attempted but blocked by missing extension file-URL permission; user informed; no permission changes made.",
+    "27 local document link targets resolve; current recording script is planner-focused."
+  ],
+  "next": "Push docs and evidence; fill contact details if supplied; user records/uploads video and reviews/submits.",
+  "limitations": [
+    "Counts are per-message plain-text content plus user-specified estimated formatting allowances, not full model chat templates.",
+    "Current policy keeps a recent suffix, not semantically important messages.",
+    "No Devpost final submission or video upload performed."
+  ]
 }

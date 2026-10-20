@@ -1,138 +1,113 @@
-# ContextFair demo script
+# ContextFair — final conversation-planner demo
 
-Final recording script. English narration; target about 3:35 including clicks and
-short pauses. The event maximum is four minutes. Time a rehearsal before recording.
-Only quoted paragraphs are spoken; directions and headings are not narration.
+Record the live app at **https://ompatnaik.com/contextfair/** in Chrome.
+No local server, installation, account or API key is needed.
+Target about 3:30, including clicks; event maximum four minutes. Time your take.
+Only blockquotes below are spoken. No contribution/credits segment.
 
 ## Before recording
 
-- Use screen plus your own voice; a webcam and slides are optional. Target 3:30,
-  with a buffer below the [four-minute maximum](https://eurekadev.devpost.com/).
-- On Mac, press Shift–Command–5, choose Record Selected Portion, frame only the
-  app, then choose your microphone under Options. Stop with Command–Control–Esc
-  or the menu-bar Stop button. See [Apple's recording guide](https://support.apple.com/en-au/102618).
-- Make a ten-second test and play it back before the full take. Confirm audible
-  speech and readable text. Keep this script on a phone or outside the capture area.
-- Have the GitHub README open in another tab before starting. Keep the browser
-  content area in the same recording region when switching to it.
+- Reload the live page. Use the built-in JEE sample, Qwen estimate, window 256,
+  reply reserve 64, per-message allowance 8 and fixed allowance 16.
+- Measure once to warm the tokenizer, then reload so the first screen shows
+  estimates. First use downloads approximately 19 MB plus library code.
+- Check the expected plan: estimate keeps 3/drops 4; measured content keeps
+  1/drops 6. At window 320, both keep 3; measured plan uses 209/256 input tokens.
+- Record the actual actions and results. If your numbers differ, check the
+  sample/settings rather than narrating mismatched numbers.
+- On Mac: Shift–Command–5 → Record Selected Portion → Options → microphone.
+  Frame the browser and make a ten-second audio/readability test first.
+- Keep unrelated tabs, account details and notifications out of the capture.
+  Keep this script on a phone or outside the recording region.
+- Do not claim the hypothetical 256-token demo window is Qwen's actual limit.
 
-- Open [the live demo](https://ompatnaik.com/contextfair/) in a normal browser
-  such as Chrome. This is hosted on GitHub Pages and requires no sign-in.
-- Use a desktop browser. Hide unrelated tabs, notifications, and account details.
-- Choose हिन्दी, set window 4,096 and reply reserve 1,024, and measure once to
-  warm the tokenizer. Return to the top before starting. Mention first-use loading.
-- Confirm the result remains 36 measured versus 33 estimated. If it differs,
-  investigate the input/settings rather than reading numbers that disagree.
-- Keep the actual measurement and screen actions visible. Record the finished
-  video under four minutes; trim pauses, not disclosures or evidence.
-- Do not describe the script chart as detected languages: its Latin bucket
-  includes spaces. Focus the demo on estimates, measurement, and budget.
-- Timing marks below are guides, not measured recording durations. If a take is
-  too long, shorten pauses or retake; do not rush the evidence.
+## 0:00–0:25 — Why I built it
 
-## 0:00–0:25 — The problem
-
-**Show:** hero, then click “Try the one-minute walkthrough.”
+**Show:** hero, then click “Plan a conversation.”
 
 > Hi, I'm Om, and this is ContextFair.
 >
-> AI conversations have limited space, measured in tokens—pieces of text.
-> If an app overestimates a message's size, it might remove useful history too
-> early. If it underestimates, the text might exceed its budget.
-> ContextFair makes that tradeoff visible.
+> While working on a JEE learning model intended to run in the browser, I started
+> looking at tokenizer download sizes and how token counts change across
+> languages. But the practical question wasn't just how many tokens a message
+> uses. It was: which parts of a student's conversation will the application keep?
 
-## 0:25–0:45 — Compare estimates
+## 0:25–1:00 — Make the problem visible
 
-**Show:** select हिन्दी. Point to the input and five estimated rows.
+**Show:** JEE sample, system instruction, first user message, budget controls.
 
-> I'll choose this Hindi example. The same text produces five estimates,
-> ranging from twenty-one to ninety-six tokens.
-> These are estimates for different model-family profiles—not five exact
-> measurements, and not a ranking of model quality.
-
-## 0:45–1:15 — Explain the estimator
-
-**Show:** Keep the Hindi input and Qwen's 33-token estimate visible. Point to the
-Qwen row. The worked calculation is in README-DETAILS.md if needed for questions.
-
-> How are these estimates calculated? The app groups characters by writing
-> system, counts each group, and multiplies those counts by model-specific
-> weights. It adds the results and rounds up.
+> Here is an illustrative tutoring conversation. At the start, the student asks
+> for simple explanations without skipping steps. Later, they ask the tutor to
+> remember that preference.
 >
-> For this Hindi message, Qwen's weighted total is about thirty-two point three,
-> giving an estimate of thirty-three. It's a lightweight approximation:
-> it doesn't actually split the text into tokens.
+> I'll use a deliberately small window of 256 tokens and reserve 64 for the reply.
+> The planner protects the system instruction and newest exchange, then removes
+> older complete exchanges until the recent history fits. It doesn't separate
+> a user's question from its assistant replies.
 
-## 1:15–1:40 — Set the budget
+## 1:00–1:30 — Estimate, then verify
 
-**Show:** context window 4,096; reply reserve 1,024.
+**Show:** estimated summary, then click “Measure Qwen messages.”
 
-> I'll set a hypothetical context window of four thousand and ninety-six tokens,
-> reserving one thousand and twenty-four for the reply.
-> That leaves three thousand and seventy-two for input.
-> Each row shows estimated usage and remaining space. This is a shared scenario,
-> not every model's actual context limit.
-
-## 1:40–2:20 — Measure and explain
-
-**Show:** click “Measure exact Qwen count” or “Measure again.” Scroll to the
-measured panel and pause. On first use, allow loading to finish.
-
-> Now I'll check the estimate with the actual Qwen tokenizer.
-> First use downloads about nineteen megabytes of tokenizer files, plus library
-> code. I've loaded those before recording. This is tokenization, not running
-> the full AI model.
+> The quick estimate keeps three messages. It counts characters by writing-system
+> bucket, applies model-specific weights, adds them and rounds up.
 >
-> The estimate is thirty-three; the measured count is thirty-six.
-> That's an underestimate of three tokens, or eight point three percent.
-> Using the measured count, this text leaves three thousand and thirty-six
-> input tokens available. That's the practical consequence of checking.
-
-## 2:20–2:45 — Change the budget and text
-
-**Show:** change reply reserve to 2,048. Point to the updated explanation, then
-edit the input to “एक नया संदेश।” and show the old result disappearing.
-
-> Reserving more space for the reply reduces the input budget.
-> Now two thousand and twelve tokens remain after this message.
+> Now I'm checking with the actual Qwen tokenizer. It runs locally in a background
+> worker, without loading the language model. With measured content, only one
+> message remains under this policy. Two retention decisions changed.
 >
-> If I edit the text, the old measurement disappears.
-> That prevents a result for the previous message from being mistaken for the
-> current one.
+> These results describe this example, not a general accuracy score.
 
-## 2:45–3:15 — Explain the engineering and limits
+## 1:30–2:05 — Explore the decision
 
-**Show:** Method & privacy, then the README's architecture.
+**Show:** change window to 320. Point to both summaries, then scroll through the
+dropped and kept message cards.
 
-> The app uses HTML, CSS, and JavaScript.
-> Transformers.js runs the tokenizer in a background browser worker,
-> keeping tokenization off the interface thread.
-> The tokenizer version is fixed so we know which version produced the count.
+> Increasing the window to 320 lets both plans keep three messages.
+> The measured-content plan uses 209 of the 256 input tokens available.
 >
-> Entered text is processed locally, although asset downloads use the internet.
-> Exact measurement currently supports Qwen only and excludes chat formatting
-> and system instructions.
+> Each card explains whether the message is kept, dropped or protected.
+> Notice that the student's original explanation preference is in the dropped
+> history. That makes the consequence visible before sending a conversation.
+> This policy keeps recent exchanges, not whichever information is most important.
 
-## 3:15–3:35 — Close
+## 2:05–2:35 — Export and fail safely
 
-**Show:** Return to the app.
+**Show:** click “Export retained JSON.” Set window to 100; show blocked status.
+Restore 320 afterward.
 
-> ContextFair brings estimates, budget planning, and exact verification into one
-> application. Next, I want to support more exact tokenizers and account for chat
-> formatting and system instructions. The goal is to help developers check how
-> much conversation space their text actually needs.
+> I can export the retained messages and budget assumptions as JSON for use in
+> my application. The original conversation stays in the editor.
+>
+> If I make the window too small, even the protected content cannot fit.
+> ContextFair shows a blocked plan and disables export, instead of silently
+> throwing away the newest question.
 
-## Recording handoff
+## 2:35–3:05 — Engineering and honest boundaries
 
-Save the final video, confirm its duration and audio, upload it to a location
-judges can access, and use that URL in the Devpost video field. No video has been
-recorded or uploaded by preparing this script. See DEVPOST_DRAFT.md for text.
+**Show:** edit the final message; measured summary disappears.
 
-Before upload, watch the complete take. Check that spoken numbers match the
-visible results, the result is readable for a few seconds, no private information
-appears, and the closing narration is audible. After upload, test the viewing link
-while logged out; an owner-visible preview is not sufficient.
+> Editing a message clears the previous measurement so an old count cannot be
+> mistaken for the new text.
+>
+> The application is plain JavaScript, with a separate tested retention algorithm
+> and a Web Worker for tokenization. Conversations are processed in browser memory.
+> Tokenizer and library downloads need internet access, but the app doesn't
+> upload the conversation or call an inference service.
 
-If measurement fails during rehearsal, stop and troubleshoot before the final
-take. Do not narrate an expected count over an error or pass a saved screenshot
-off as a successful live measurement.
+## 3:05–3:30 — Close
+
+**Show:** formatting allowance controls and planner summary.
+
+> The content counts are measured, but chat-formatting costs are still explicit,
+> adjustable allowances—not an exact provider prompt or a guarantee it will fit.
+>
+> Next I want model-specific chat templates and more exact tokenizers.
+> ContextFair turns a token count into something actionable: see what stays,
+> see what gets dropped, and export a conversation plan you can inspect.
+
+## After recording
+
+Play the whole video, check readable numbers and audible speech, confirm it is
+under four minutes, and upload it with viewer access enabled. Supply the real
+video URL on Devpost. Do not substitute a placeholder link.

@@ -6,38 +6,43 @@ Prepared drafts: [spoken demo script](DEMO_SCRIPT.md),
 
 ## One-sentence pitch
 
-ContextFair helps people building multilingual AI tools see how much conversation
-space their text uses, compare quick estimates, and verify Qwen counts locally.
+ContextFair shows which AI chat messages fit, which get dropped, and why, with
+estimated-versus-measured content plans and exportable retained conversation JSON.
 
 ## One-minute live demo
 
-Start the app using the README. Choose Hindi, set the window to 4,096, and
-reserve 1,024 for the reply. Explain that 3,072 tokens remain for input. Point out
-that the five rows are estimates for the same text. Measure Qwen and read the
-measured-versus-estimated result. Increase the reply reserve to 2,048; show the
-new remaining-space explanation. Edit the input to show its old count disappears.
+Open https://ompatnaik.com/contextfair/#planner. No setup is needed.
+Use the built-in JEE sample with window 256, reserve 64 and allowances 8/16.
+The estimate keeps 3 messages. Measure Qwen: its content-based plan keeps 1.
+Raise the window to 320: both retain 3; measured content plus allowances uses
+209 of 256 input tokens. Show the dropped first message containing the student's
+explanation preference. Export retained JSON. Set window 100 to demonstrate
+blocked protected content, then restore 320. These small budgets are illustrative,
+not actual model limits. Editing text invalidates measured results.
 
 Use built-in examples for the public demo. Let the first download finish before
 recording, and explain that the tokenizer is downloaded on first use. This is
 tokenization, not model inference; there is no generated answer.
 
-## Video outline (target 3:35)
+## Video outline (target 3:30)
 
 | Time | Show | Explain |
 | --- | --- | --- |
-| 0:00–0:25 | Hero and language buttons | A conversation has limited space; token-count mistakes can affect retained history. |
-| 0:25–0:45 | Hindi input and five estimates | All five rows are estimates, not model-quality rankings. |
-| 0:45–1:15 | Qwen estimate | Count script buckets, apply profile weights, add and round up: 32.342 becomes 33. |
-| 1:15–1:40 | Context and reply controls | A 4,096 window minus a 1,024 reply reserve leaves 3,072 input tokens. This is a hypothetical shared budget. |
-| 1:40–2:20 | Exact Qwen panel | Explain the measured count, its difference from the estimate, and the budget consequence. |
-| 2:20–2:45 | Change reserve, then edit text | Remaining space updates; changing text invalidates the previous measurement. |
-| 2:45–3:15 | Method/privacy and README | Counts run in the browser; one pinned tokenizer is supported. Chat formatting is excluded. |
-| 3:15–3:35 | App and next steps | Close on the combined estimate/budget/verification workflow. More exact tokenizers and chat-format budgeting are future work. |
+| 0:00–0:25 | Hero | Browser-based JEE project inspired investigation of tokenizer size and history budgeting. |
+| 0:25–1:00 | JEE editor and budget | System/newest exchange protected; oldest complete exchanges removed. |
+| 1:00–1:30 | Estimate and measurement | Weighted character estimate versus pinned Qwen content counts; 3 retained versus 1. |
+| 1:30–2:05 | Increase window to 320 | Both retain 3; inspect why earlier preferences were dropped. |
+| 2:05–2:35 | Export; then window 100 | Download usable retained JSON; impossible protected content blocks export. |
+| 2:35–3:05 | Edit a message and explain architecture | Stale counts clear; worker tokenizes locally, no inference. |
+| 3:05–3:30 | Close | Explicit allowances, not exact chat-template count; more tokenizer/template support next. |
 
 ## Claims to keep precise
 
 - “Helps inspect a context budget” does not mean it prevents all truncation.
 - There is one exact Qwen tokenizer and five estimate profiles.
+- Measured planner totals add estimated formatting allowances; not a provider
+  acceptance guarantee. The app does not evaluate whether dropped information
+  matters or run the tutor model.
 - Illustrative language examples do not establish a fairness benchmark.
 - The 35-versus-43 reference result checks integration, not general accuracy.
   It is deliberately not a product demo example.
@@ -65,4 +70,3 @@ technical quality, and presentation. AI development assistance is allowed.
   participant actions; this guide does not assert they are complete.
 
 Organizer deadline: October 20, 2026, 5:00 PM CDT = October 21, 3:30 AM IST.
-Internal target: October 20, 9:00 PM IST.

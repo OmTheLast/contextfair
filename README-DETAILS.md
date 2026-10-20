@@ -1,11 +1,11 @@
 # ContextFair
 
-**See how much room your message leaves for an AI conversation.**
+**See which messages fit in an AI conversation—and which get dropped.**
 
-ContextFair helps people building multilingual AI tools compare token estimates,
-plan a context budget, and check an estimate against an actual tokenizer—all in
-the browser. A token is a piece of text counted by a model; the context window
-is the space available for its input and response.
+ContextFair helps people building multilingual AI tools plan retained message
+history, compare token estimates with actual Qwen content counts, and export a
+budgeted conversation—all in the browser. A token is a piece of text counted by
+a model; the context window is the space available for its input and response.
 
 Built for **EurekaDev 2026 · Coding Track · Computer Science + AI**.
 
@@ -22,7 +22,7 @@ Local setup remains available below.
 
 ## Deployment
 
-[The Pages workflow](.github/workflows/pages.yml) runs the eight application tests
+[The Pages workflow](.github/workflows/pages.yml) runs the application tests
 and publishes only `dist/` after changes to application files on `main`. It can
 also be started manually from GitHub Actions. No backend server or ChatGPT hosting
 is needed. The domain is inherited from the account's existing GitHub Pages
@@ -36,10 +36,38 @@ send more text than the available space allows. Writing systems and tokenizer
 choices can affect these counts, so multilingual products need more than one
 rule of thumb.
 
-ContextFair brings three steps into one interface: compare fast estimates,
-inspect their effect on a shared budget, and measure Qwen on demand. It helps
-developers and students inspect this tradeoff before deciding how to manage
-history. It does not itself trim conversations or change a model's context window.
+ContextFair brings three steps into one interface: plan retained messages,
+inspect how estimates change that decision, and measure Qwen on demand.
+It can export a trimmed conversation but does not send it to a model or change
+the model's context window.
+
+## Conversation planner
+
+The planner takes a system instruction plus user/assistant messages, a context
+window, reply reserve, per-message allowance and fixed prompt allowance.
+It groups each user message with following assistant replies up to the next
+user message. It protects the newest group and system instruction, then removes
+the oldest groups until the retained suffix fits. It does not skip a large
+recent group to pack unrelated older messages, split an exchange, summarize
+content or rank semantic importance.
+
+If protected content alone exceeds the input budget, the plan is blocked and
+export is disabled. Otherwise exported JSON contains the retained messages and
+explicit budget assumptions. It can be reimported. Export never deletes editor
+contents. A limit of 100 messages and 100,000 characters bounds input size.
+No automatic persistence is used.
+
+Each Qwen content count is measured separately with special tokens disabled.
+System content is included. The total is **content + per-message allowances
+(including the system message if present) + fixed allowance**. Defaults of 8 per
+message and 16 fixed are adjustable placeholders, not measurements of Qwen's
+template. Tools, full chat-template tokenization and provider billing remain
+unsupported. A fitting plan is therefore not a guarantee of provider acceptance.
+
+The illustrative JEE sample at window 256/reserve 64/allowances 8 and 16 keeps
+3 messages under the Qwen estimate and 1 under measured Qwen content. At window
+320 both keep 3, and the measured-content plan uses 209/256 input tokens.
+These are a reproducible example, not general accuracy or user-impact evidence.
 
 ## Try it locally
 
@@ -104,6 +132,10 @@ Context window − reply reserve → input budget → remaining space / overflow
   counts multiplied by profile weights.
 - `dist/app.js`: input handling, display updates, and worker messages.
   Changing the text invalidates its previous exact result.
+- `dist/conversation.mjs`: validated JSON import, estimated message counts and
+  pure whole-exchange retention planning.
+- `dist/planner.js`: conversation editor, budget comparison, stale batch-result
+  rejection and browser-local JSON export.
 - `dist/exact-tokenizer-worker.js`: loads the tokenizer on demand and counts
   `encode(text, { add_special_tokens: false })` output IDs.
 - `dist/index.html` and `dist/styles.css`: interface, walkthrough, method dialog,
@@ -165,8 +197,9 @@ its research evidence remains separate from the application.
 node --test tests/core.test.mjs
 ```
 
-Tests cover representative script classification, Unicode code-point handling,
-budget arithmetic, estimate comparison, and measured-result explanations. The
+The 17 tests cover representative script classification, Unicode code points,
+budget arithmetic, estimate comparison, measured-result explanations, protected
+content, whole-exchange trimming, boundary budgets, invalid input and JSON import. The
 worker configuration check verifies pinned settings; it does not download
 the tokenizer or replace a browser check.
 
@@ -187,6 +220,14 @@ requests to the page and application scripts returned HTTP 200 without cookies
 or authorization headers. GitHub's unauthenticated API also confirmed the source
 repository is public.
 
+The October 20 conversation-planner release additionally verified the JEE
+sample's 3-versus-1 retention comparison in Chrome on the public domain,
+increasing the window, blocked export, stale results, and a real downloaded JSON
+file containing the system instruction plus three retained messages. That file
+reimported successfully. A narrow-screen check showed no horizontal overflow.
+Public release `570dc1c` includes versioned assets to avoid mixed old/new browser
+caches. Screenshot: [live planner](docs/screenshots/conversation-planner-live.jpg).
+
 ## Privacy and network use
 
 ContextFair's application code does not upload entered text, save it between
@@ -202,12 +243,14 @@ remain usable and the measurement can be retried.
 
 ## Limitations
 
-- Exact means the count for this tokenizer and settings. Counts omit chat
-  templates, special tokens, system prompts, tools, and provider-specific billing.
+- Exact means individual content counts for this tokenizer and settings.
+  The planner includes system content but uses estimated formatting allowances.
+  Full chat templates, special tokens, tools, and provider billing are not measured.
 - Five comparison rows always show estimates; measuring Qwen does not replace
   them. Profile names do not promise accuracy for every release in a model family.
-- The shared context window is a user-selected scenario, not a verified limit
-  for each model. This version does not import or prune chat history.
+- The context window is a user-selected scenario, not a verified model limit.
+  The planner imports text-only chat JSON and exports an oldest-first retained
+  suffix; it does not alter an actual running chat or invoke a model.
 - Script classes are coarse Unicode ranges, not language detection. Mixed text,
   emoji, code, or unrepresented scripts can expose estimator weaknesses.
 - Smaller token counts do not establish better answers, cultural understanding,

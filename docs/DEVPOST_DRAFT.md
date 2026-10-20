@@ -1,8 +1,9 @@
 # Devpost submission copy
 
-Updated October 20, 2026. Ready for final review and copying into Devpost; nothing
-has been submitted. The About section below is project prose; the final
-section contains operator notes and is not part of the project description.
+Updated October 20, 2026 for the conversation planner. Video and final submission
+remain participant actions. The operator notes at the end are not project prose.
+The name, pitch, About text, technology tags, live/repository links and track/category
+have been saved in the existing Devpost draft and verified by reopening the forms.
 
 ## Project name
 
@@ -10,140 +11,157 @@ ContextFair
 
 ## Elevator pitch
 
-See how much room your message leaves for an AI conversation: compare multilingual
-token estimates, plan your context budget, and verify Qwen counts in your browser.
+See which AI chat messages fit—and which get dropped. Plan multilingual conversation budgets, compare estimates with Qwen token counts, and export retained messages in your browser.
 
 ## About the project
 
 ### Inspiration
 
-AI conversations have limited space, measured in tokens. When a chat application
-relies on an inaccurate estimate, it can either remove useful earlier messages
-too soon or admit text that exceeds its budget. Different writing systems and
-tokenizers make a single character-count rule an unreliable design assumption.
+I was working on a JEE learning model intended to run in the browser. That made
+me think beyond the model itself: tokenizer files also add download weight, and
+an interactive application needs to manage the limited space available for
+conversation history and replies.
 
-ContextFair grew out of work examining token estimation in a separate research
-study. The application asks a practical question: what does a count difference
-mean for the space left in an AI conversation?
+I started investigating how token counts vary with models, tokenizers, and
+writing systems. A lightweight estimate seemed useful for immediate feedback,
+but a number on its own did not answer the practical question: which parts of
+a student's conversation would the application actually keep?
+
+ContextFair turns that question into an application. The tokenizer investigation
+remains a separate study; this project lets someone inspect and export a
+conversation-retention plan.
 
 ### What it does
 
-[Try the public demo](https://ompatnaik.com/contextfair/)—no sign-in or
-installation required.
+[Open the live app](https://ompatnaik.com/contextfair/) in a normal browser.
+No account, installation, API key, or running local server is needed.
 
-ContextFair lets a user paste text or choose an illustrative multilingual example,
-compare five model-family estimates, set a hypothetical context window, and
-reserve space for a reply. Each row shows estimated usage and remaining space.
+Start with an illustrative JEE tutoring conversation, edit individual messages,
+or import JSON. Set a context window, reserve space for the reply, and choose
+allowances for message formatting. The planner protects the system instruction
+and newest exchange, then removes the oldest complete user-led exchanges until
+the remaining recent history fits. Each message is labelled kept, dropped, or
+protected, with its token cost and the reason for the decision.
 
-The user can then request an exact count from a pinned Qwen tokenizer. The app
-shows the measured count beside the estimate and explains its budget consequence.
-Changing the reply reserve updates that explanation. Editing the text hides the
-previous measurement until the new text is measured.
+Quick estimates are available for five model-family profiles. On demand, a
+pinned Qwen tokenizer measures each message's content locally. The planner
+compares the resulting retention decisions with the estimate. Changing the
+budget updates the plan immediately; editing a message invalidates the old
+measurement.
 
-In the built-in Hindi demonstration, Qwen estimates 33 tokens while the pinned
-tokenizer measures 36: an underestimate of three tokens, or 8.3%. With a
-4,096-token window and 1,024 reserved for the reply, that measured input leaves
-3,036 tokens available. This illustrates the workflow; it is not a general
-accuracy score or a controlled comparison between languages.
+If even the protected content cannot fit, the app shows a blocked plan instead
+of silently dropping the newest question. Otherwise, export downloads the
+retained messages as JSON, including the budget assumptions. The original
+conversation remains in the editor.
 
-### How it was built
+The separate token lab explains the estimator with illustrative multilingual
+examples and measured-versus-estimated counts.
 
-The application uses buildless HTML, CSS, and JavaScript. Instant estimates use
-script-aware profile weights adapted from the MIT-licensed LocalMind estimator.
-The estimator counts Unicode code points by script bucket, multiplies each
-count by a model-profile weight, adds the results, and rounds up. The
-[worked calculation and source check](https://github.com/OmTheLast/contextfair/blob/main/README-DETAILS.md#estimator-calculation-and-evidence)
-explain the Hindi estimate of 33; the actual tokenizer measured 36 in our demo
-review.
+### How we built it
 
-Exact counting runs in a browser Web Worker using Transformers.js 3.8.1 and the
-Qwen tokenizer at a fixed repository revision. It downloads tokenizer assets on
-demand without loading model weights or calling an inference API.
+The application uses HTML, CSS, JavaScript modules, and Web Workers, deployed
+through GitHub Pages. There is no inference backend.
 
-ContextFair adds the interface, shared-budget workflow, measured-versus-estimated
-explanation, and handling for loading, errors, retries, and stale results. The
-application code processes entered text locally. Font, library, and tokenizer
-downloads still involve requests to external services.
+The fast estimator groups Unicode code points into script buckets, multiplies
+their counts by model-specific weights, sums the results, and rounds up. The
+classifier and weights are adapted from MIT-licensed LocalMind, not presented
+as a newly invented tokenizer. A worked calculation and reproducible source
+check are included in the repository.
 
-### Challenges
+Exact content counting uses Transformers.js 3.8.1 with a fixed Qwen tokenizer
+revision. A background worker downloads tokenizer assets on demand without
+loading language-model weights. The retention algorithm is a separate pure
+function: account for system content and allowances, group user-led exchanges,
+and remove an oldest-first prefix until the budget is met or protected content
+prevents a valid plan.
 
-The main design challenge was explaining an estimate without making it look like
-an exact measurement. The comparison rows and verification panel are separated
-and explicitly labelled. Another challenge was keeping results attached to the
-text they describe: a previous measurement must disappear when input changes.
+The editor validates imports, uses text-only rendering for message contents,
+rejects stale worker results, and supports export without uploading the
+conversation. Fonts, library code, and tokenizer assets still require external
+network requests.
 
-Browser validation also caught a styling rule that made hidden result boxes
-visible during loading. Correcting that behavior made the download and result
-states clearer. The roughly 19 MB tokenizer download made on-demand loading and
-an understandable progress state important.
+### Challenges we ran into
 
-### Accomplishments
+The biggest product challenge was moving beyond a token counter. A developer
+can already download a tokenizer; the useful extra layer is seeing which
+messages a retention policy would remove and being able to export that plan.
 
-The application connects a token-count difference to a concrete budget decision
-in one browser workflow. Its distinctive feature is the path from quick estimate
-to actual measurement to remaining conversation space, rather than a new
-tokenization algorithm.
+Correctness also required handling boundary cases: preserving a question with
+its answers, never discarding the newest exchange silently, refusing an
+impossible budget, and clearing measurements when text changes.
 
-Eight automated tests pass. Desktop and mobile checks on
-the deployed app confirmed measurement, reserve changes, stale-result handling,
-and access to the method dialog. The source includes setup instructions,
-attribution, and limitations. On October 20, anonymous access to the public page
-and its application assets succeeded, and the Hindi measurement was repeated in
-Chrome outside the development environment.
+Another challenge was being precise about “exact.” A tokenizer can measure
+message content exactly, but summing that content is not the same as tokenizing
+a provider's complete chat template. Formatting allowances are therefore
+adjustable and explicitly labelled as estimates.
 
-### Lessons learned
+### Accomplishments that we're proud of
 
-A count becomes useful when a person can understand what decision it changes.
-For this application, that means showing how much room remains and explaining
-what the count excludes. Verification also needs a precise scope: matching one
-example does not establish accuracy across languages or model families.
+The application now links token counting to a visible, inspectable decision.
+In our illustrative JEE example, with a 256-token window, 64-token reply reserve,
+and the displayed allowances, the Qwen estimate retains three messages while
+the measured-content plan retains one. Increasing the window to 320 retains
+three in both plans. This is one reproducible demonstration, not a general
+accuracy or user-impact claim.
+
+Seventeen automated tests cover the original estimator and the new planner,
+including exact boundaries, protected-content overflow, complete-exchange
+trimming, invalid inputs, and JSON imports. Browser checks verified measured
+retention, budget changes, stale-result handling, blocked export, downloaded
+JSON, and a narrow-screen layout.
+
+### What we learned
+
+A token count is useful when it changes a decision someone can inspect.
+Small count differences can cross a whole-exchange retention boundary.
+Keeping complete exchanges can deliberately leave unused space; filling every
+last token is not the same as preserving a coherent recent conversation.
+
+The lightweight estimate is a convenience, not a replacement for the correct
+tokenizer. The planner makes its assumptions visible so developers can examine
+the tradeoff rather than mistake an approximation for a guarantee.
 
 ### What's next for ContextFair
 
-Future work includes more exact tokenizers, explicit budgeting for chat templates
-and system instructions, and evaluating how people use the tool when designing
-multilingual applications. The current prototype supports one exact tokenizer
-and does not automatically prune conversations.
+Model-specific chat-template accounting, more exact tokenizers, optional pinned
+older messages, and additional retention strategies. The current policy is
+oldest-first, not semantic importance or summarization. We would also like to
+evaluate the workflow with people building multilingual tutoring applications.
 
-### Credits and scope
+### Scope and sources
 
-The application began on October 11, 2026. The script classifier and fitted
-weights reuse LocalMind work by Chirag Patnaik under MIT; they are not claimed
-as a new estimator. The Tokenizer Estimation Study remains an independent project.
-OpenAI Codex assisted implementation and documentation.
+Qwen measurement covers each message's plain-text content with special tokens
+disabled. Total budgets add user-specified formatting allowances; they are not
+exact serialized provider prompts, billing estimates, or guarantees of model
+acceptance. The app does not run a tutor model, assess answer quality, or send
+messages to an AI service. Examples are illustrative, not real student records.
 
-Exact counts apply to the selected tokenizer with special tokens disabled. They
-exclude chat formatting, system prompts, tools, and provider-specific billing.
-Token count does not measure model quality or establish fairness. No user-impact
-or cost-saving result is claimed.
+Application work by Om Patnaik, with AI development assistance. LocalMind's
+script classifier and weights are credited under MIT; the independent
+Tokenizer Estimation Study is not submitted as this application.
 
-Sources: [ContextFair code and README](https://github.com/OmTheLast/contextfair),
-[LocalMind](https://github.com/NakliTechie/LocalMind),
-[Tokenizer Estimation Study](https://github.com/OmTheLast/Tokenizer-estimation-study),
-[Transformers.js](https://huggingface.co/docs/transformers.js/api/tokenizers),
-[pinned Qwen tokenizer](https://huggingface.co/onnx-community/Qwen3.5-4B-ONNX-OPT/tree/57b13b4dce7be073be0df3eaf1c842a6bbb2e0a7).
+[Source and method evidence](https://github.com/OmTheLast/contextfair) ·
+[LocalMind](https://github.com/NakliTechie/LocalMind) ·
+[Transformers.js](https://huggingface.co/docs/transformers.js/api/tokenizers) ·
+[Pinned tokenizer](https://huggingface.co/onnx-community/Qwen3.5-4B-ONNX-OPT/tree/57b13b4dce7be073be0df3eaf1c842a6bbb2e0a7)
 
 ## Built with
 
 JavaScript, HTML5, CSS3, Web Workers, Hugging Face Transformers.js, Qwen tokenizer,
-Node.js (tests), GitHub, GitHub Pages (hosting). Codex was development assistance,
-not an inference dependency of the running application.
+Node.js (tests), GitHub, GitHub Pages.
 
 ## Submission operator notes — do not paste into About
 
-- Track: Coding. Category: Computer Science + AI (Technology).
-- Source URL: https://github.com/OmTheLast/contextfair
-- Video: record using DEMO_SCRIPT.md, check duration <=4 minutes, and supply the
-  actual accessible video URL. No video link exists yet in this draft.
-- Hosted demo: https://ompatnaik.com/contextfair/ — GitHub Pages, public as of
-  October 20. Anonymous HTTPS access was verified without cookies or authorization
-  headers. Runs in a normal browser. The README also includes local setup.
-- Source visibility: GitHub's unauthenticated API confirmed the repository is
-  public on October 20. Verify the final uploaded video link while logged out.
-- Paste the elevator pitch, About section, and Built with items into their
-  matching fields. Do not paste these operator notes into the project story.
-- No participant eligibility or completed registration is asserted here.
-- Confirm participant registration, age/student eligibility, and Discord
-  membership separately. No submissions or external messages were sent.
-- Requirements: https://eurekadev.devpost.com/ and
-  https://eurekadev.devpost.com/rules (checked October 20, 2026).
+- Track/category: Coding / Computer Science + AI (Technology).
+- Source: https://github.com/OmTheLast/contextfair
+- Live app: https://ompatnaik.com/contextfair/
+- Video: user will supply; do not invent a URL. Maximum four minutes.
+- Required contact email is awaiting the user's choice; optional Discord is blank.
+- Optional gallery upload was blocked by the browser extension's file-URL
+  permission. Screenshot available at screenshots/conversation-planner-live.jpg.
+- Use the updated planner demo script, not the earlier token-only walkthrough.
+- Registration, eligibility, Discord membership and final submission require
+  participant review. Do not infer answers or accept rules on the user's behalf.
+- Official deadline: October 20, 2026, 5:00 PM CDT / October 21, 3:30 AM IST.
+- Source: https://eurekadev.devpost.com/ and https://eurekadev.devpost.com/rules
+  (checked October 20).

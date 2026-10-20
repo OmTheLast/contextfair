@@ -2,7 +2,32 @@
 
 Updated: 2026-10-20 (Asia/Kolkata)
 
-Status: **conversation budgeting feature in progress**
+Status: **conversation planner live; Devpost draft saved except contact email/video**
+
+Latest October 20 checkpoint:
+- Live URL: https://ompatnaik.com/contextfair/#planner.
+- Code commit 570dc1c5e0165cda2d664217a2eba7057afbc537 deployed successfully in
+  GitHub Actions run 39471688160. Normal public Chrome verified measured results
+  and styling. Earlier release 3b09e5c exposed a returning-browser cache mismatch;
+  versioned CSS/script/worker URLs fixed it.
+- 17 tests pass, estimator source check unchanged, syntax/diff checks pass.
+  JEE sample at 256/64 and 8/16 allowances: estimate keeps 3, measured keeps 1;
+  at window 320 both keep 3, measured plan uses 209/256. Blocked export and stale
+  result clearing verified. Downloaded actual JSON and checked reimport.
+- Updated README, method details, final demo script, Devpost prose, judge guide.
+  Screenshot: docs/screenshots/conversation-planner-live.jpg.
+- Existing Devpost draft 1248565 updated: name, pitch, full JEE-inspired story,
+  JavaScript/HTML5/CSS3/GitHub tags, public live/repository links, Coding track,
+  Computer Science + AI category. Reopened forms and verified persisted values.
+- Video remains blank by request. Required contact email requested from user;
+  optional Discord blank. Terms not accepted; final Submit not clicked.
+- Optional gallery upload blocked because browser extension lacks file-URL
+  access; no permission settings changed. User may upload screenshot manually.
+- Draft edit URL:
+  https://devpost.com/submit-to/30588-eurekadev-2026/manage/submissions/1248565-contextfair/additional-info/edit
+- Next: push updated docs/logs; fill contact details if user supplies them,
+  then user records/uploads video, reviews eligibility/terms and submits.
+  Local preview process session 1919 is only for internal QA; stop on handoff.
 
 October 20, 17:54 UTC: user requests useful message-level budgeting and Devpost
 draft filling except the video. Deadline verified as 22:00 UTC (03:30 IST).
