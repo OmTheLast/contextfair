@@ -2,7 +2,16 @@
 
 Updated: 2026-10-20 (Asia/Kolkata)
 
-Status: **deployed page reviewed; demo script and Devpost draft prepared**
+Status: **public access enabled; normal-browser release verification in progress**
+
+October 20 public release: user explicitly requested a normal-browser demo
+without owner access. Sites access changed from custom owner-only to public,
+policy revision 2. Anonymous curl (no cookies or auth headers) returned HTTP 200
+at the unchanged demo URL, with app HTML and no sign-in redirect. Opened the
+live app in Chrome and began exact-measurement verification. Updated the footer
+and current instructions to public access; packaging/deployment of those text
+changes is in progress. Earlier private-state records below are historical.
+Record: rounds/2026-10-20-public-release.json.
 
 October 20 final narration: DEMO_SCRIPT now includes the plain-language weighted
 character estimator explanation between comparison and budgeting. Product-only

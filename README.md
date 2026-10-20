@@ -15,9 +15,9 @@ Built for **EurekaDev 2026 · Coding Track · Computer Science + AI**.
 [Spoken demo script](docs/DEMO_SCRIPT.md) · [Devpost draft](docs/DEVPOST_DRAFT.md) ·
 [Page review and screenshots](docs/PAGE_REVIEW.md)
 
-**Demo access:** the hosted prototype currently requires the owner's account.
-Judges can run the complete app locally using the instructions below. Public
-hosting and the recorded submission video are still release tasks.
+**Demo access:** the hosted app is public and requires no owner account or Codex
+browser. Open the demo URL in a modern browser. Anonymous HTTP access was verified
+on October 20, 2026. Local setup remains available below.
 
 ## Why it matters
 
@@ -176,8 +176,8 @@ for exact settings, screenshots, and the script-bucket wording issue.
 
 ContextFair's application code does not upload entered text, save it between
 visits, or send it to an inference API. Text is passed locally to the worker.
-There are no application analytics or account features; the hosting platform
-controls access to the private prototype.
+There are no application analytics or account features. The hosted demo allows
+public access without sign-in.
 
 The page requests Google Fonts. Exact measurement requests library code from
 jsDelivr and tokenizer assets from Hugging Face. These services and the host see
@@ -221,8 +221,8 @@ licenses and attribution.
 
 ## Next steps
 
-Rehearse the prepared script, record the video, and review the submission draft. Release the demo
-for judges after owner review. Potential future product work includes additional
+Rehearse the prepared script, record the video, and review the submission draft.
+The hosted demo is public. Potential future product work includes additional
 exact tokenizers and explicit chat-template budgeting; those features are not
 part of this prototype.
 

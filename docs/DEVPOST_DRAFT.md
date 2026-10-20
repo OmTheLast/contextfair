@@ -125,10 +125,9 @@ not an inference dependency of the running application.
 - Source URL: https://github.com/OmTheLast/contextfair
 - Video: record using DEMO_SCRIPT.md, check duration <=4 minutes, and supply the
   actual accessible video URL. No video link exists yet in this draft.
-- Hosted prototype: https://contextfair.om-exp99.chatgpt.site — currently
-  owner-private. Do not offer this as a judge-accessible demo unless sharing is
-  changed and logged-out access is verified. A live demo is recommended, not
-  mandatory; the README includes local setup.
+- Hosted demo: https://contextfair.om-exp99.chatgpt.site — public as of October 20.
+  Anonymous HTTP access was verified without cookies or authorization headers.
+  No Codex browser is required. The README also includes local setup.
 - Verify public repository visibility and judge access before submitting.
 - Review authorship/credits and replace template plural headings if desired;
   no team roster or participant eligibility has been asserted in this draft.

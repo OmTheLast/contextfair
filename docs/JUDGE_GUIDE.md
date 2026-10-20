@@ -53,10 +53,11 @@ technical quality, and presentation. AI development assistance is allowed.
 
 - Source: https://github.com/OmTheLast/contextfair
 - Track/category proposal: Coding / Computer Science + AI.
-- Hosted prototype: https://contextfair.om-exp99.chatgpt.site (owner-private).
+- Hosted demo: https://contextfair.om-exp99.chatgpt.site (public; no owner login
+  or Codex browser required; anonymous HTTP access verified October 20).
 - Devpost description and spoken script are drafted; owner review is pending.
 - Still needed: video recording/upload, approval of the Devpost wording, verification
-  of public repository access, and a decision on opening the optional live demo.
+  of public repository access. The live demo is now public.
 - Registration, eligibility, Discord membership, and final submission remain
   participant actions; this guide does not assert they are complete.
 

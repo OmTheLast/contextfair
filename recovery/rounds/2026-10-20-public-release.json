@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-20",
+  "request": "Make the demo accessible in a normal browser without owner access or the Codex browser.",
+  "completed": [
+    "Changed existing Sites access to public, policy revision 2.",
+    "Verified anonymous HTTP 200 at the original app URL without auth headers or cookies.",
+    "Opened the app in Chrome, selected Hindi and the demo budget.",
+    "Opened the existing Site source with the supported source helper.",
+    "Changed the footer and active demo documentation to public access."
+  ],
+  "url": "https://contextfair.om-exp99.chatgpt.site",
+  "project_id": "appgprj_6acb864b26b08191b2c87a336a6b9cfd",
+  "remaining": "Complete Chrome exact measurement, deploy footer change, verify public static assets and record final evidence.",
+  "next_action": "Package and publish source through the existing Site workflow.",
+  "credentials": "Kept in session memory only; not saved."
+}

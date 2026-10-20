@@ -16,7 +16,8 @@ Only quoted paragraphs are spoken; directions and headings are not narration.
 - Have the GitHub README open in another tab before starting. Keep the browser
   content area in the same recording region when switching to it.
 
-- Open the deployed app in the owner's session or run locally using the README.
+- Open the public demo in a normal browser such as Chrome, or run locally using
+  the README. No owner account or Codex browser is required.
 - Use a desktop browser. Hide unrelated tabs, notifications, and account details.
 - Choose हिन्दी, set window 4,096 and reply reserve 1,024, and measure once to
   warm the tokenizer. Return to the top before starting. Mention first-use loading.
