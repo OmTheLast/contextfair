@@ -25,9 +25,11 @@
     "Existing Devpost draft 1248565 updated: name, pitch, 6639-character story, JavaScript/HTML5/CSS3/GitHub tags, live and repository links, Coding track and Computer Science + AI category. Reopened forms and verified persisted fields.",
     "Required contact email requested from user. Video and optional Discord left blank. Final submission and terms untouched.",
     "Screenshot gallery upload attempted but blocked by missing extension file-URL permission; user informed; no permission changes made.",
-    "27 local document link targets resolve; current recording script is planner-focused."
+    "27 local document link targets resolve; current recording script is planner-focused.",
+    "Documentation/evidence commit 9af9d203ef89a8e84ed26f0cbe7de83290f4749f pushed and matched remote main; clean working tree verified.",
+    "Internal Python QA server PID 79935/session 1919 stopped; public GitHub Pages hosting unaffected."
   ],
-  "next": "Push docs and evidence; fill contact details if supplied; user records/uploads video and reviews/submits.",
+  "next": "Fill contact details if supplied; user records/uploads video and reviews/submits.",
   "limitations": [
     "Counts are per-message plain-text content plus user-specified estimated formatting allowances, not full model chat templates.",
     "Current policy keeps a recent suffix, not semantically important messages.",

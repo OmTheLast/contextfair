@@ -25,9 +25,13 @@ Latest October 20 checkpoint:
   access; no permission settings changed. User may upload screenshot manually.
 - Draft edit URL:
   https://devpost.com/submit-to/30588-eurekadev-2026/manage/submissions/1248565-contextfair/additional-info/edit
-- Next: push updated docs/logs; fill contact details if user supplies them,
-  then user records/uploads video, reviews eligibility/terms and submits.
-  Local preview process session 1919 is only for internal QA; stop on handoff.
+- Documentation/evidence commit 9af9d203ef89a8e84ed26f0cbe7de83290f4749f pushed
+  and matched remote main; working tree clean at verification.
+- Internal QA server PID 79935/session 1919 was stopped. Public hosting is
+  independent and remains live.
+- Next: fill contact details if user supplies them; user records/uploads video,
+  reviews eligibility/terms and submits. Optional screenshot upload remains
+  blocked by extension file-URL permission.
 
 October 20, 17:54 UTC: user requests useful message-level budgeting and Devpost
 draft filling except the video. Deadline verified as 22:00 UTC (03:30 IST).
