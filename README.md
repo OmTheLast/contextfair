@@ -2,7 +2,7 @@
 
 **See which AI chat messages fit, which get dropped, and why—then export the retained conversation.**
 
-[Open the public demo](https://ompatnaik.com/contextfair/) · [Demo script](docs/DEMO_SCRIPT.md) · [Devpost description](docs/DEVPOST_DRAFT.md)
+[Open the public demo](https://ompatnaik.com/contextfair/) · [Devpost description](docs/DEVPOST_DRAFT.md)
 
 Hosted on GitHub Pages at **ompatnaik.com/contextfair/**. Runs in a normal modern browser—no sign-in, API key, or installation required. Entered text is processed locally; fonts, libraries, and tokenizer files load from external hosts.
 

@@ -12,7 +12,7 @@ Built for **EurekaDev 2026 · Coding Track · Computer Science + AI**.
 [Live application](https://ompatnaik.com/contextfair/) ·
 [Demo and pitch guide](docs/JUDGE_GUIDE.md) · [Attribution](NOTICE.md) · [MIT license](LICENSE)
 
-[Spoken demo script](docs/DEMO_SCRIPT.md) · [Devpost draft](docs/DEVPOST_DRAFT.md) ·
+[Devpost draft](docs/DEVPOST_DRAFT.md) ·
 [Page review and screenshots](docs/PAGE_REVIEW.md)
 
 **Demo access:** the app is hosted independently on GitHub Pages at

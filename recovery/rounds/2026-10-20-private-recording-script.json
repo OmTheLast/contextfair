@@ -1,0 +1,11 @@
+{
+  "request": "Keep recording narration private in chat instead of publishing it to GitHub.",
+  "completed": [
+    "Moved the recording script to an ignored project-local private folder.",
+    "Removed public script links and the duplicated timed video outline.",
+    "Recorded that the user-provided Devpost contact email was saved without storing the address in public documentation."
+  ],
+  "checks": "git diff --check passed; private script confirmed ignored; no remaining script references in active README or docs. Commit, push and remote SHA verification pending.",
+  "boundaries": "No runtime change, no Git history rewrite, no final Devpost submission.",
+  "next": "Verify and push the removals, deliver narration in chat, await the user's video."
+}

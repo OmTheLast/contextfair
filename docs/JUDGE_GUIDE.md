@@ -1,7 +1,6 @@
 # ContextFair demo and submission guide
 
-Prepared drafts: [spoken demo script](DEMO_SCRIPT.md),
-[Devpost description](DEVPOST_DRAFT.md), and
+Project materials: [Devpost description](DEVPOST_DRAFT.md) and
 [deployed-page review with screenshots](PAGE_REVIEW.md).
 
 ## One-sentence pitch
@@ -23,18 +22,6 @@ not actual model limits. Editing text invalidates measured results.
 Use built-in examples for the public demo. Let the first download finish before
 recording, and explain that the tokenizer is downloaded on first use. This is
 tokenization, not model inference; there is no generated answer.
-
-## Video outline (target 3:30)
-
-| Time | Show | Explain |
-| --- | --- | --- |
-| 0:00–0:25 | Hero | Browser-based JEE project inspired investigation of tokenizer size and history budgeting. |
-| 0:25–1:00 | JEE editor and budget | System/newest exchange protected; oldest complete exchanges removed. |
-| 1:00–1:30 | Estimate and measurement | Weighted character estimate versus pinned Qwen content counts; 3 retained versus 1. |
-| 1:30–2:05 | Increase window to 320 | Both retain 3; inspect why earlier preferences were dropped. |
-| 2:05–2:35 | Export; then window 100 | Download usable retained JSON; impossible protected content blocks export. |
-| 2:35–3:05 | Edit a message and explain architecture | Stale counts clear; worker tokenizes locally, no inference. |
-| 3:05–3:30 | Close | Explicit allowances, not exact chat-template count; more tokenizer/template support next. |
 
 ## Claims to keep precise
 
@@ -62,8 +49,7 @@ technical quality, and presentation. AI development assistance is allowed.
 - Track/category proposal: Coding / Computer Science + AI.
 - Hosted demo: https://ompatnaik.com/contextfair/ (GitHub Pages; public, no sign-in
   required; anonymous HTTPS access verified October 20).
-- Devpost description is ready to copy after final review; the recording script
-  includes estimator logic and a product-focused close.
+- Devpost description has been saved in the submission draft for final review.
 - Still needed: video recording/upload, final review, and submission.
   Source visibility and live-demo public access have been verified.
 - Registration, eligibility, Discord membership, and final submission remain

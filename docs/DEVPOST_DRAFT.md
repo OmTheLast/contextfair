@@ -156,10 +156,10 @@ Node.js (tests), GitHub, GitHub Pages.
 - Source: https://github.com/OmTheLast/contextfair
 - Live app: https://ompatnaik.com/contextfair/
 - Video: user will supply; do not invent a URL. Maximum four minutes.
-- Required contact email is awaiting the user's choice; optional Discord is blank.
+- User-provided contact email has been saved on Devpost; optional Discord is blank.
 - Optional gallery upload was blocked by the browser extension's file-URL
   permission. Screenshot available at screenshots/conversation-planner-live.jpg.
-- Use the updated planner demo script, not the earlier token-only walkthrough.
+- Record the conversation planner, not just the earlier token-count walkthrough.
 - Registration, eligibility, Discord membership and final submission require
   participant review. Do not infer answers or accept rules on the user's behalf.
 - Official deadline: October 20, 2026, 5:00 PM CDT / October 21, 3:30 AM IST.

@@ -2,7 +2,16 @@
 
 Updated: 2026-10-20 (Asia/Kolkata)
 
-Status: **conversation planner live; Devpost draft saved except contact email/video**
+Status: **conversation planner live; Devpost contact email saved; video and submission pending**
+
+Latest follow-up: user requests recording narration privately in chat, not on
+GitHub. Removed the tracked script and its active documentation links, plus the
+duplicated timed video outline. Retained a local ignored copy under `.private/`.
+Do not publish recording scripts in future. Earlier Git commits retain the
+previously published file; no history rewrite authorized or performed.
+Contact email was saved on the existing Devpost draft; do not copy the address
+into public logs. Video blank, Discord blank, terms unchecked and final submission
+not performed. Next: give the recording script in chat, then await the video.
 
 Latest October 20 checkpoint:
 - Live URL: https://ompatnaik.com/contextfair/#planner.
@@ -19,7 +28,7 @@ Latest October 20 checkpoint:
 - Existing Devpost draft 1248565 updated: name, pitch, full JEE-inspired story,
   JavaScript/HTML5/CSS3/GitHub tags, public live/repository links, Coding track,
   Computer Science + AI category. Reopened forms and verified persisted values.
-- Video remains blank by request. Required contact email requested from user;
+- Video remains blank by request. User-provided contact email saved on Devpost;
   optional Discord blank. Terms not accepted; final Submit not clicked.
 - Optional gallery upload blocked because browser extension lacks file-URL
   access; no permission settings changed. User may upload screenshot manually.
@@ -29,7 +38,7 @@ Latest October 20 checkpoint:
   and matched remote main; working tree clean at verification.
 - Internal QA server PID 79935/session 1919 was stopped. Public hosting is
   independent and remains live.
-- Next: fill contact details if user supplies them; user records/uploads video,
+- Next: user records/uploads video,
   reviews eligibility/terms and submits. Optional screenshot upload remains
   blocked by extension file-URL permission.
 
@@ -209,7 +218,7 @@ study an independent research project.
 
 ## Exact next action
 
-Record using the public Chrome demo and current DEMO_SCRIPT.md; no owner login
+Record using the public Chrome demo and private chat narration; no owner login
 or Codex browser is required. Final video and Devpost submission are still pending.
 GitHub remote divergence is resolved. Public source and demo access are verified;
 Devpost copy is at docs/DEVPOST_DRAFT.md. Wait for the actual video URL, check its
@@ -227,11 +236,11 @@ stale-result behavior, and mobile method access were verified. No horizontal
 overflow or captured console warnings/errors appeared. Review notes and actual
 screenshots are in docs/PAGE_REVIEW.md and docs/screenshots/.
 
-docs/DEMO_SCRIPT.md contains the spoken narration and recording checklist;
+The private recording script contains the spoken narration and recording checklist;
 target 3:30 including clicks and pauses, to be confirmed with a timed rehearsal.
 docs/DEVPOST_DRAFT.md contains the prepared
 description and separate submission operator notes. English is the current
-narration default. Documents are linked from README and JUDGE_GUIDE.
+narration default. The recording script is not part of the public documentation.
 
 Next: Om reviews wording and rehearses the script, then records/uploads a video
 under four minutes. Consider clarifying the script chart's Latin bucket (it
