@@ -4,7 +4,7 @@ The script-classification scheme and fitted tokenizer-profile weights in
 `dist/core.mjs` are adapted from LocalMind:
 
 - Source: <https://github.com/NakliTechie/LocalMind>
-- Pinned study revision: `b39f0bc145a0c0926ba22247ee31cd369e0445b6c`
+- Pinned study revision: `b39f0bc145a0c0926ba22247ee31cd369e0445b6`
 - Copyright (c) 2026 Chirag Patnaik
 - License: MIT
 

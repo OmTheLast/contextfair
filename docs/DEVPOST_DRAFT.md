@@ -47,6 +47,11 @@ accuracy score or a controlled comparison between languages.
 
 The application uses buildless HTML, CSS, and JavaScript. Instant estimates use
 script-aware profile weights adapted from the MIT-licensed LocalMind estimator.
+The estimator counts Unicode code points by script bucket, multiplies each
+count by a model-profile weight, adds the results, and rounds up. The README's
+[worked calculation and source check](https://github.com/OmTheLast/contextfair#estimator-calculation-and-evidence)
+explain the Hindi estimate of 33; the actual tokenizer measured 36 in our demo
+review. This example is not an overall accuracy score.
 Exact counting runs in a browser Web Worker using Transformers.js 3.8.1 and the
 Qwen tokenizer at a fixed repository revision. It downloads tokenizer assets on
 demand without loading model weights or calling an inference API.

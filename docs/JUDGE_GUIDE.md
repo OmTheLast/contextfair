@@ -31,7 +31,7 @@ tokenization, not model inference; there is no generated answer.
 | 1:40–2:20 | Exact Qwen panel | Explain the measured count, its difference from the estimate, and the budget consequence. |
 | 2:20–2:45 | Edit text; measure again | The previous count becomes stale. Results must belong to the current input. |
 | 2:45–3:10 | Method/privacy and README | Counts run in the browser; one pinned tokenizer is supported. Chat formatting is excluded. |
-| 3:10–3:30 | Attribution and next steps | Identify LocalMind reuse, the separate study, and Codex assistance. More exact tokenizers are future work. |
+| 3:10–3:30 | App and next steps | Close on the combined estimate/budget/verification workflow. More exact tokenizers and chat-format budgeting are future work. |
 
 ## Claims to keep precise
 

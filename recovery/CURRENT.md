@@ -4,6 +4,19 @@ Updated: 2026-10-20 (Asia/Kolkata)
 
 Status: **deployed page reviewed; demo script and Devpost draft prepared**
 
+October 20 provenance clarification: verified the reused LocalMind coefficients
+and classifier against hash-checked upstream files. Added
+scripts/verify-estimator-source.mjs and a worked Hindi calculation to README;
+linked it from the Devpost draft. Corrected an extra trailing character in the
+source SHA in README and NOTICE. All 75 weights and 1,114,112 code-point
+classifications match; Hindi weighted sum 32.342 rounds to 33. Eight app tests
+pass. Removed the obsolete credits segment from JUDGE_GUIDE's video outline;
+DEMO_SCRIPT already has no contribution/credits speech. Written source notices
+remain. Research files and deployed app unchanged. GitHub sync is still pending;
+the new README anchor is local until pushed. Next: rehearse the product-focused
+script; inspect remote changes before syncing submission evidence.
+Record: rounds/2026-10-20-estimator-evidence.json.
+
 October 20: recording guidance added to docs/DEMO_SCRIPT.md, including Mac
 microphone/capture setup, an audio test, timing buffer and post-recording checks.
 Current deployed page controls were inspected without changing UI state; exact

@@ -107,6 +107,49 @@ revision `57b13b4dce7be073be0df3eaf1c842a6bbb2e0a7`.
 Pinning a revision fixes which tokenizer files are requested, making the count
 reproducible. See the [Transformers.js tokenizer API](https://huggingface.co/docs/transformers.js/api/tokenizers).
 
+## Estimator calculation and evidence
+
+The estimate is a weighted character count, not a tokenizer:
+`ceil(sum(character count in each bucket × profile weight for that bucket))`.
+Weights represent approximate tokens per Unicode code point. They are fixed
+numbers in the app, not learned from the visitor's text.
+
+For the built-in Hindi message and Qwen profile:
+
+| Character bucket | Code points | Weight | Contribution |
+| --- | ---: | ---: | ---: |
+| Latin bucket (all spaces in this example) | 15 | 0.196 | 2.940 |
+| Symbols | 1 | 0.549 | 0.549 |
+| Devanagari | 61 | 0.473 | 28.853 |
+
+The total is **32.342**, rounded up to **33 estimated tokens**. The previously
+observed exact Qwen count was **36**; this arithmetic check does not rerun it.
+Character buckets lose word order and word identity, so equal bucket counts
+produce equal estimates even when an actual tokenizer could produce different
+counts. Code points are also not always the same as visible characters.
+
+The [pinned upstream source](https://github.com/NakliTechie/LocalMind/blob/b39f0bc145a0c0926ba22247ee31cd369e0445b6/index.html#L8986-L9058)
+contains these coefficients and classification rules. Its comments describe
+coordinate-descent fitting: repeatedly adjusting one coefficient at a time to
+reduce error against tokenizer counts. That describes upstream's stated method,
+not a fitting run reproduced by ContextFair. The comment refers to 42 samples,
+while the saved fixture module contains 38; do not present either as an
+independent accuracy benchmark.
+
+An optional source check verifies the upstream file hashes, all 75 reused
+coefficients, classification for all 1,114,112 code-point values, and the Hindi
+calculation. Run it against a checkout of the pinned LocalMind revision:
+
+```bash
+node scripts/verify-estimator-source.mjs /path/to/LocalMind
+```
+
+This check passed on October 20, 2026. It establishes reuse and arithmetic,
+not general prediction accuracy. The app itself does not require that checkout.
+The separate study's [reproduction report](https://github.com/OmTheLast/Tokenizer-estimation-study/blob/main/docs/PHASE0_RESULTS.md)
+documents tokenizer checks and special-token discrepancies on familiar fixtures;
+its research evidence remains separate from the application.
+
 ## Verification and limits of the evidence
 
 ```bash
@@ -162,7 +205,7 @@ ContextFair began as an application on October 11, 2026. Its interface, budget
 workflow, worker integration, explanatory copy, and product tests are application
 work. The script classifier and fitted profile weights are adapted from the
 MIT-licensed [LocalMind](https://github.com/NakliTechie/LocalMind) estimator by
-Chirag Patnaik, revision `b39f0bc145a0c0926ba22247ee31cd369e0445b6c`.
+Chirag Patnaik, revision `b39f0bc145a0c0926ba22247ee31cd369e0445b6`.
 
 The independent [Tokenizer Estimation Study](https://github.com/OmTheLast/Tokenizer-estimation-study)
 informed the project; its datasets, experiments, and research claims remain

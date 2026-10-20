@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-20",
+  "request": "Explain why dependency credits exist, provide evidence for estimator logic, remove the My contribution narration.",
+  "completed": [
+    "Verified local upstream checkout and file hashes against existing study records without changing study files.",
+    "Corrected source SHA typo in active README and NOTICE: correct revision ends e0445b6, not e0445b6c.",
+    "Added reproducible source verifier, worked arithmetic and limitations to app documentation.",
+    "Aligned judge guide video outline with the already edited product-only closing."
+  ],
+  "checks": {
+    "reused_coefficients_equal": 75,
+    "classification_values_equal": 1114112,
+    "hindi_weighted_sum": 32.342,
+    "hindi_estimate": 33,
+    "application_tests_passed": 8,
+    "exact_tokenizer_rerun": false
+  },
+  "limits": "Upstream comments describe coordinate descent on 42 samples; saved fixtures contain 38. Fitting not reproduced and no general accuracy claim established. Web fetch failed; source inspection used the pinned hash-checked local checkout.",
+  "preserved": "README/NOTICE/Devpost dependency and assistance disclosures. No new authorship or teammate claims. No study edits, deployment, upload or submission.",
+  "next_action": "Explain the verified estimate to Om, rehearse the product-only script, then reconcile known remote divergence before publishing these local evidence updates."
+}
