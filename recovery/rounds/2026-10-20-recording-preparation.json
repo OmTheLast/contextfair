@@ -11,5 +11,7 @@
   "verification_scope": "Documentation and read-only UI inspection. Prior Hindi measurements retained as historical observations, not newly measured. No runtime changes or test rerun.",
   "remaining": ["Timed rehearsal", "Record and review video under four minutes", "Upload and verify judge access", "Verify public source access", "Review and submit Devpost"],
   "next_action": "Om records a ten-second microphone test, then rehearses the provided click-by-click narration.",
-  "external_changes": "No video recorded/uploaded, no sharing changes, no submission."
+  "external_changes": "No video recorded/uploaded, no sharing changes, no submission.",
+  "checks": "421 spoken words; git diff --check passed; both new recovery JSON files parse successfully.",
+  "git": "Local commit c9b5ea4 created. Initial push failed due sandbox DNS; approved network retry reached GitHub but was rejected because remote main contains newer work. No force push or remote reconciliation attempted. Inspect/fetch remote changes before a later sync."
 }

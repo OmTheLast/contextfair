@@ -10,6 +10,9 @@ Current deployed page controls were inspected without changing UI state; exact
 measurement was not rerun. Rehearsal counts remain the October 18 observations.
 No recording, upload, submission or access change has been performed.
 Record: rounds/2026-10-20-recording-preparation.json.
+Recording notes are committed locally at c9b5ea4. Push was rejected because
+remote main contains newer work; do not force push. Inspect remote changes
+before syncing. Recording can proceed from the local script (421 spoken words).
 
 October 19: inspected the implementation to prepare a plain-English engineering
 explanation for Om's judge rehearsal. No application or deployment changes;
