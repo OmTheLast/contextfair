@@ -16,7 +16,14 @@
     "application_runtime": "No diff against deployed source commit 0246b66a9ec43fd78784631aea3262c19c54130d.",
     "git_diff_check": "passed"
   },
-  "status": "verified_locally_push_pending",
-  "next_action": "Finish the merge, push normally, and verify remote HEAD and public files.",
+  "remote_verification": {
+    "submission_commit": "b1ea15fee00a30a29226033efe01764701ef6e57",
+    "push": "origin/main updated normally from 05bce4b; git ls-remote matched local HEAD.",
+    "anonymous_github_files": "README.md, README-DETAILS.md, docs/DEVPOST_DRAFT.md, docs/DEMO_SCRIPT.md and dist/index.html returned HTTP 200 and matched local bytes.",
+    "live_site": "Public page HTTP 200 without redirect; app content matches source. app.js, core.mjs, exact-tokenizer-worker.js and styles.css each match local bytes.",
+    "html_comparison_note": "Initial full HTML byte comparison failed because hosting appends a Cloudflare script. Follow-up compared the app-owned HTML through its script tag and all four runtime assets successfully; no host security setting changed."
+  },
+  "status": "submission_files_pushed_and_remote_verified",
+  "next_action": "Om supplies the uploaded video link, reviews Devpost fields, confirms participant requirements and submits. Push this final verification record without runtime changes.",
   "remaining_user_actions": ["Finish and upload the video", "Review submission fields and confirm registration/eligibility", "Submit on Devpost"]
 }

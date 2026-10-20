@@ -2,15 +2,18 @@
 
 Updated: 2026-10-20 (Asia/Kolkata)
 
-Status: **public demo deployed and verified in Chrome**
+Status: **public demo verified; GitHub synchronized; submission copy ready**
 
 October 20 submission sync: fetched GitHub commit 05bce4b and reconciled its
 compact README/detail-file layout with the latest public-access and evidence
 changes. GitHub anonymous API confirms public visibility. Devpost prose, source
 links and checklist updated. Eight tests and estimator source checks pass; 28
 relative document links resolve; bounded credential scan found no matches.
-Runtime files match deployed commit 0246b66 exactly. Merge commit and push are
-pending. No live app changes or browser interaction while Om records.
+Runtime files match deployed commit 0246b66 exactly. Merge b1ea15f was pushed
+normally and its full SHA matched remote main. Five public GitHub files were
+downloaded anonymously and matched local bytes. Live app content and all four
+runtime assets matched; hosting adds a Cloudflare script to the HTML. No live
+app changes or browser interaction while Om records.
 Record: rounds/2026-10-20-submission-sync.json.
 
 October 20 public release: user explicitly requested a normal-browser demo
@@ -147,8 +150,11 @@ study an independent research project.
 
 Record using the public Chrome demo and current DEMO_SCRIPT.md; no owner login
 or Codex browser is required. Final video and Devpost submission are still pending.
-GitHub remote divergence remains unresolved, but the Sites source and deployment
-have been successfully updated. The following describes the earlier review:
+GitHub remote divergence is resolved. Public source and demo access are verified;
+Devpost copy is at docs/DEVPOST_DRAFT.md. Wait for the actual video URL, check its
+duration and viewer access, and complete final participant review/submission.
+No video upload or Devpost submission was performed here.
+The following describes the earlier review:
 
 The October 18 presentation pass is deployed from commit
 `33c32efa4a9604fbcd68207d90119c43937abc25`.
@@ -169,5 +175,5 @@ narration default. Documents are linked from README and JUDGE_GUIDE.
 Next: Om reviews wording and rehearses the script, then records/uploads a video
 under four minutes. Consider clarifying the script chart's Latin bucket (it
 includes spaces) before recording; review only, no app change made this round.
-Verify public repo access and decide hosted-demo access before final submission.
-No video, Devpost submission, or access change was performed.
+Public repo and hosted-demo access have since been verified on October 20.
+Video upload and final Devpost submission remain pending.
