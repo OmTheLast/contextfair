@@ -2,7 +2,17 @@
 
 Updated: 2026-10-20 (Asia/Kolkata)
 
-Status: **public demo verified; GitHub synchronized; submission copy ready**
+Status: **migrating to GitHub Pages; independent live link not yet verified**
+
+October 20 hosting correction: user rejects ChatGPT-branded hosting. Public
+GitHub repository confirmed and Pages enabled in workflow mode. Added a workflow
+that tests the app and publishes only dist. GitHub inherits ompatnaik.com from
+the existing account and reports certificate state bad_authz; do not promise
+the new link until anonymous HTTPS and normal-browser checks pass. No unrelated
+repository or DNS settings changed. Old hosting remains intact as fallback.
+Record: rounds/2026-10-20-github-pages.json.
+Immediate next action: test and push workflow, verify deployment/domain, then
+update current submission documentation to the verified independent link.
 
 October 20 submission sync: fetched GitHub commit 05bce4b and reconciled its
 compact README/detail-file layout with the latest public-access and evidence
