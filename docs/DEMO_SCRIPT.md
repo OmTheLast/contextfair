@@ -27,7 +27,7 @@ Only quoted paragraphs are spoken; directions and headings are not narration.
 - Do not describe the script chart as detected languages: its Latin bucket
   includes spaces. Focus the demo on estimates, measurement, and budget.
 - Timing marks below are guides, not measured recording durations. If a take is
-  too long, shorten pauses or retake; do not rush the evidence or remove credits.
+  too long, shorten pauses or retake; do not rush the evidence.
 
 ## 0:00–0:30 — The problem
 
@@ -85,7 +85,7 @@ edit the input to “एक नया संदेश।” and show the old res
 
 ## 2:30–3:05 — Explain the implementation and limits
 
-**Show:** Method & privacy, then the README's architecture and attribution.
+**Show:** Method & privacy, then the README's architecture.
 
 > The application uses HTML, CSS, and JavaScript. Exact counting runs in a browser
 > worker using Transformers.js and a pinned Qwen tokenizer. It needs no inference
@@ -96,16 +96,14 @@ edit the input to “एक नया संदेश।” and show the old res
 > These counts cover the entered text. Chat formatting, system instructions, and
 > provider billing are excluded. Only Qwen has exact measurement in this version.
 
-## 3:05–3:30 — Contribution and close
+## 3:05–3:25 — Next steps and close
 
-**Show:** README attribution, then return to the app.
+**Show:** Return to the app.
 
-> My application contribution is the interface, budget workflow, and verification
-> integration. The estimator is adapted from MIT-licensed LocalMind work. A separate
-> tokenizer study informed the project, and Codex assisted development and
-> documentation. Future work includes more exact tokenizers and chat-template
-> budgeting. The goal is to make context decisions easier to inspect before
-> useful conversation history is lost.
+> ContextFair brings estimates, budget planning, and exact verification into one
+> application. Next, I want to support more exact tokenizers and account for chat
+> formatting and system instructions. The goal is to help developers check how
+> much conversation space their text actually needs.
 
 ## Recording handoff
 
@@ -115,7 +113,7 @@ recorded or uploaded by preparing this script. See DEVPOST_DRAFT.md for text.
 
 Before upload, watch the complete take. Check that spoken numbers match the
 visible results, the result is readable for a few seconds, no private information
-appears, and the final credits are audible. After upload, test the viewing link
+appears, and the closing narration is audible. After upload, test the viewing link
 while logged out; an owner-visible preview is not sufficient.
 
 If measurement fails during rehearsal, stop and troubleshoot before the final

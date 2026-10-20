@@ -12,7 +12,13 @@ No recording, upload, submission or access change has been performed.
 Record: rounds/2026-10-20-recording-preparation.json.
 Recording notes are committed locally at c9b5ea4. Push was rejected because
 remote main contains newer work; do not force push. Inspect remote changes
-before syncing. Recording can proceed from the local script (421 spoken words).
+before syncing. Recording can proceed from the local script.
+
+October 20 follow-up: at Om's request, removed the spoken contribution/credits
+paragraph from DEMO_SCRIPT.md and replaced it with a product-focused close.
+README, NOTICE and Devpost attribution/disclosure remain unchanged. Checked the
+script diff; no runtime changes or tests needed. Next: rehearse and record.
+Record: rounds/2026-10-20-script-close.json.
 
 October 19: inspected the implementation to prepare a plain-English engineering
 explanation for Om's judge rehearsal. No application or deployment changes;

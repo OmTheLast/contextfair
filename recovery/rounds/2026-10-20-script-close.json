@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-20",
+  "request": "Remove the contribution section and Codex mention from the spoken demo.",
+  "completed": "Replaced the spoken contribution/credits paragraph with a product summary and future work; aligned screen directions and recording checklist.",
+  "scope": "docs/DEMO_SCRIPT.md only, plus recovery notes. Written README, NOTICE and Devpost attribution/disclosure preserved.",
+  "checks": "Documentation diff reviewed; no application changes.",
+  "remaining": "Rehearse and record. Existing GitHub remote divergence still requires inspection before syncing; no force push.",
+  "next_action": "Use the new product-focused closing narration."
+}
