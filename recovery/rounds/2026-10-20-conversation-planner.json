@@ -1,0 +1,16 @@
+{
+  "request": "Add useful conversation budgeting, deploy before the deadline, then fill Devpost except the video. Inspiration: user's browser-based JEE model work led to investigating tokenizer download size and multilingual token estimates.",
+  "status": "running",
+  "started_utc": "2026-10-20T17:54:16Z",
+  "deadline_utc": "2026-10-20T22:00:00Z",
+  "design": [
+    "Separate system prompt and editable user/assistant messages.",
+    "Protect system prompt and newest user-led exchange; drop oldest complete exchanges until a contiguous suffix fits.",
+    "Compare estimate retention with measured Qwen content-token retention.",
+    "User-specified formatting allowance is not a measured chat template.",
+    "JSON import and retained-message export; no server upload or automatic local persistence.",
+    "Keep GitHub Pages hosting. Do not change independent study or JEE project.",
+    "Do not submit Devpost, supply video, accept terms or invent eligibility answers."
+  ],
+  "next": "Implement pure budgeting functions, tests and planner UI; validate locally and live; update docs; fill available Devpost fields."
+}

@@ -28,11 +28,19 @@ async function loadTokenizer(requestId) {
 }
 
 self.onmessage = async event => {
-  const { type, requestId, text = "" } = event.data || {};
-  if (type !== "measure") return;
+  const { type, requestId, text = "", texts } = event.data || {};
+  if (type !== "measure" && type !== "measure-batch") return;
   try {
     self.postMessage({ type: "progress", requestId, message: "Preparing exact Qwen tokenizer…" });
     const tokenizer = await loadTokenizer(requestId);
+    if (type === "measure-batch") {
+      if (!Array.isArray(texts) || texts.length > 101 || texts.some(text => typeof text !== "string") || texts.reduce((sum, text) => sum + text.length, 0) > 100000) {
+        throw new Error("Conversation exceeds the measurement limit.");
+      }
+      const counts = texts.map(text => tokenizer.encode(text, { add_special_tokens: false }).length);
+      self.postMessage({ type: "batch-result", requestId, counts, modelId: MODEL_ID, revision: REVISION, specialTokens: false });
+      return;
+    }
     const ids = tokenizer.encode(String(text), { add_special_tokens: false });
     self.postMessage({
       type: "result",

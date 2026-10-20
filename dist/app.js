@@ -131,7 +131,7 @@ document.querySelectorAll("[data-example]").forEach(button => button.addEventLis
   render();
 }));
 
-document.querySelectorAll("input, textarea, select").forEach(element => element.addEventListener("input", render));
+document.querySelectorAll("#lab input, #lab textarea, #lab select").forEach(element => element.addEventListener("input", render));
 $("#clear-button").addEventListener("click", () => { input.value = ""; document.querySelectorAll("[data-example]").forEach(item => item.classList.remove("active")); input.focus(); render(); });
 $("#method-button").addEventListener("click", () => $("#method-dialog").showModal());
 $("#footer-method").addEventListener("click", () => $("#method-dialog").showModal());

@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="See how tokenizer choice and writing system change usable AI context.">
+  <meta name="description" content="See which chat messages fit, which get dropped, and how token estimates change the decision. Plan and export a conversation budget locally.">
   <meta name="theme-color" content="#f6f2e8">
-  <title>ContextFair — see what your language costs in context</title>
+  <title>ContextFair — know what your AI conversation keeps</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,17 +15,56 @@
   <div class="grain" aria-hidden="true"></div>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="ContextFair home"><span>CF</span>ContextFair</a>
-    <nav aria-label="Primary navigation"><a href="#lab">Lab</a><a href="#why">Why it matters</a><button id="method-button" class="text-button">Method</button></nav>
+    <nav aria-label="Primary navigation"><a href="#planner">Planner</a><a href="#lab">Token lab</a><button id="method-button" class="text-button">Method</button></nav>
     <span class="privacy-pill"><i></i> Runs in your browser</span>
   </header>
 
   <main id="top">
     <section class="hero">
       <div class="hero-kicker">Plan multilingual AI conversations</div>
-      <h1>Your language should not<br><em>silently cost more context.</em></h1>
-      <p class="hero-copy">How much room does your message leave for the conversation? Compare five token estimates, reserve space for a reply, and check the Qwen count directly in your browser.</p>
-      <div class="hero-actions"><a class="primary-link" href="#lab">Try the one-minute walkthrough <span aria-hidden="true">↗</span></a><a href="#why">Why this matters</a></div>
+      <h1>What will your AI<br><em>conversation forget?</em></h1>
+      <p class="hero-copy">Plan which messages fit before you send them. Protect your system instruction, reserve a reply, and see exactly which older exchanges get dropped—then check the decision with a real tokenizer.</p>
+      <div class="hero-actions"><a class="primary-link" href="#planner">Plan a conversation <span aria-hidden="true">↗</span></a><a href="#lab">Explore the token lab</a></div>
       <div class="hero-stat"><span>01</span><p><strong>Count transparently.</strong> Estimates are labelled as estimates. On-demand exact verification is labelled separately.</p></div>
+    </section>
+
+    <section id="planner" class="planner-shell" aria-labelledby="planner-title">
+      <div class="section-heading"><div><span class="eyebrow">Conversation budget planner</span><h2 id="planner-title">See what stays. See what goes.</h2></div><span class="planner-tag">Local processing · no inference API</span></div>
+      <p class="planner-intro">Start with an illustrative JEE tutoring conversation, edit the messages, or paste your own JSON. The system instruction and newest exchange are protected. Older user-led exchanges are removed together, oldest first.</p>
+      <div class="planner-grid">
+        <div class="planner-editor">
+          <div class="planner-toolbar"><h3>Your conversation</h3><button id="load-conversation-sample" type="button">Reset JEE example</button></div>
+          <p class="demo-note">Illustrative messages, not real student data. Reset replaces the editor contents. Nothing is saved between visits.</p>
+          <label class="field-label" for="system-prompt">System instruction · always protected</label>
+          <textarea id="system-prompt" rows="3" maxlength="100000"></textarea>
+          <div id="conversation-messages"></div>
+          <button id="add-message" type="button">+ Add message</button>
+          <details class="import-panel"><summary>Import conversation JSON</summary>
+            <p class="demo-note">Paste an array of { "role": "user" or "assistant", "content": "text" }. An optional first system message is supported. Import replaces the editor. Limit: 100 messages / 100,000 characters.</p>
+            <textarea id="conversation-json" aria-label="Conversation JSON" rows="5" placeholder='[{"role":"user","content":"Help me revise algebra."}]' maxlength="200000"></textarea>
+            <button id="import-conversation" type="button">Load JSON</button>
+            <p id="import-status" role="status"></p>
+          </details>
+        </div>
+        <div class="planner-results">
+          <h3>Choose your budget</h3>
+          <div class="planner-controls">
+            <label>Context window<input id="plan-window" type="number" min="1" max="10000000" step="1" value="256"></label>
+            <label>Reply reserve<input id="plan-reserve" type="number" min="0" step="1" value="64"></label>
+            <label>Per-message allowance<input id="plan-message-overhead" type="number" min="0" step="1" value="8"></label>
+            <label>Fixed prompt allowance<input id="plan-fixed-overhead" type="number" min="0" step="1" value="16"></label>
+            <label class="profile-field">Estimate profile<select id="plan-profile"></select></label>
+          </div>
+          <p class="demo-note">Small demo budget to make trimming visible; not a model's advertised limit. Allowances approximate role markers, chat formatting and other prompt overhead. Defaults (8/message + 16 fixed) are adjustable placeholders, not calibrated Qwen template costs.</p>
+          <div class="planner-toolbar"><button id="measure-conversation" class="primary-button" type="button">Measure Qwen messages</button><button id="export-conversation" type="button">Export retained JSON</button></div>
+          <p id="conversation-measure-status" role="status">Estimates work immediately. Qwen measurement downloads ~19 MB of tokenizer files plus library code on first use.</p>
+          <p id="plan-error" role="alert" hidden></p>
+          <div id="plan-summary" aria-live="polite"></div>
+          <div id="plan-decisions"></div>
+          <p class="demo-note">“Measured” means exact Qwen content counts per message, plus your estimated formatting allowances. It is not an exact serialized chat prompt or a guarantee a provider will accept it. No messages are sent to a model or deleted from your editor.</p>
+          <p id="export-status" role="status"></p>
+        </div>
+      </div>
     </section>
 
     <section id="lab" class="lab-shell" aria-labelledby="lab-title">
@@ -89,10 +128,12 @@
     <p>The current build uses fitted script-aware profiles to estimate content tokens. Each Unicode character is assigned to a script class, multiplied by a model-family weight, summed, and rounded up.</p>
     <div class="method-callout"><strong>Estimate ≠ exact tokenization.</strong><span>Five profiles remain fast estimates. Exact Qwen verification is an explicit on-demand action using a pinned tokenizer revision with special tokens disabled.</span></div>
     <p>The estimator is adapted from MIT-licensed LocalMind work investigated in the independent Tokenizer Estimation Study. Exact verification uses the browser-supported Transformers.js tokenizer API. Product scenarios and interface code belong to ContextFair.</p>
-    <p><strong>What the count covers.</strong> Exact Qwen counts use the selected tokenizer for this text with special tokens disabled. Chat templates, system instructions, tool definitions, and provider billing are excluded. The five comparison rows always remain estimates.</p>
+    <p><strong>What the count covers.</strong> Exact Qwen counts use the selected tokenizer with special tokens disabled. The token lab counts only its input text. The conversation planner also counts the system instruction and each message separately, then adds your adjustable formatting allowances. It does not tokenize a complete chat template or tool definitions and cannot guarantee provider acceptance. The five comparison rows always remain estimates.</p>
+    <p><strong>Retention policy.</strong> The planner removes the oldest complete user-led exchanges until a recent suffix fits, protecting the system instruction and newest exchange. If those alone exceed the budget, it shows a blocked plan and disables export. It does not summarize dropped text or rank it by importance.</p>
     <p><strong>Privacy.</strong> ContextFair does not send your entered text to a server or save it between visits. The page loads fonts from Google; exact measurement downloads library code from jsDelivr and tokenizer files from Hugging Face. Those services receive normal network requests. Browser caching depends on your settings.</p>
     <p><a href="https://github.com/OmTheLast/contextfair#how-it-works">Read the method, evidence, and limitations</a></p>
   </dialog>
   <script type="module" src="./app.js"></script>
+  <script type="module" src="./planner.js"></script>
 </body>
 </html>

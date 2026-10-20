@@ -2,7 +2,16 @@
 
 Updated: 2026-10-20 (Asia/Kolkata)
 
-Status: **independent GitHub Pages demo verified; submission documentation synchronized**
+Status: **conversation budgeting feature in progress**
+
+October 20, 17:54 UTC: user requests useful message-level budgeting and Devpost
+draft filling except the video. Deadline verified as 22:00 UTC (03:30 IST).
+Implement protected system/newest exchange, oldest-complete-exchange trimming,
+estimated versus measured content plans, explicit formatting allowances,
+JSON import/export. Keep GitHub Pages; do not modify research or JEE roots.
+Record: rounds/2026-10-20-conversation-planner.json.
+Next: implement/test/deploy, update submission prose with user's JEE inspiration,
+then fill Devpost where authorized; leave video and final submission to user.
 
 October 20 hosting correction: user rejects ChatGPT-branded hosting. Public
 GitHub repository confirmed and Pages enabled in workflow mode. Workflow commit
