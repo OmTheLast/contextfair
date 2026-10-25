@@ -1,5 +1,7 @@
 <h1 align="center">ContextFair</h1>
 
+[Portfolio case study](https://ompatnaik.com/projects/contextfair/) · [Live conversation planner](https://ompatnaik.com/contextfair/#planner)
+
 **See which AI chat messages fit, which get dropped, and why—then export the retained conversation.**
 
 [Open the public demo](https://ompatnaik.com/contextfair/) · [Devpost description](docs/DEVPOST_DRAFT.md)
